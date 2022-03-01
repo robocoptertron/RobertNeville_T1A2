@@ -1,0 +1,24 @@
+{
+  "name": "robertneville_t1a2",
+  "version": "1.0.0",
+  "description": "Portfolio for CoderAcademy assessment",
+  "main": "./src/index.js",
+  "scripts": {
+    "build": "sass --no-source-map src/scss/main.scss src/public/css/main.css",
+    "build-watch": "sass --no-source-map --watch src/scss/main.scss src/public/css/main.css",
+    "dev-start": "cross-env NODE_ENV=development node src/index.js",
+    "dev": "concurrently \"npm:build-watch\" \"npm:dev-start\"",
+    "start": "node ./src/index.js"
+  },
+  "author": "Robert Neville",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.3",
+    "express-handlebars": "^6.0.2"
+  },
+  "devDependencies": {
+    "concurrently": "^7.0.0",
+    "nodemon": "^2.0.15",
+    "sass": "^1.49.9"
+  }
+}

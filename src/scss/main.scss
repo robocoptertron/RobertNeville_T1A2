@@ -1,0 +1,86 @@
+@import "variables";
+
+html,
+body {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+}
+
+@font-face {
+  font-family: 'Roboto Mono', monospace;
+  src: url("assets/RobotoMono-Regular.ttf");
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 'Roboto Mono', monospace;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1em;
+  background-color: $header-bg;
+
+  * {
+    user-select: none;
+  }
+
+  img {
+    border: 2px solid $footer-bg;
+    border-radius: 50%;
+    margin-bottom: 1em;
+  }
+
+  nav {
+    display: flex;
+
+    a {
+      margin: 0 1em;
+      text-decoration: none;
+      color: $footer-bg;
+    }
+  }
+}
+
+main {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1em;
+  background-color: $main-bg;
+  background-image: url('assets/moroccan-flower.png');
+
+  section {
+    padding: 1em;
+    width: 100%;
+    max-width: 600px;
+    border-radius: 5px;
+    box-shadow: 5px 10px $footer-bg;
+    background-color: $header-bg;
+    color: $footer-bg;
+
+    h2 {
+      border-bottom: 2px solid $footer-bg;
+      margin-top: 0;
+    }
+
+    p {
+      text-align: justify;
+    }
+  }
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $footer-bg;
+  color: $footer-text;
+}
