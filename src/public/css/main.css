@@ -20,25 +20,33 @@ body {
 header {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  padding: 1em;
-  background-color: #D6DBDF;
+  position: fixed;
+  top: 0;
+  padding: 0 1em;
+  width: 100%;
+  height: 65px;
+  background-color: #EBEDEF;
 }
 header * {
   user-select: none;
 }
 header img {
-  border: 2px solid #1B2631;
-  border-radius: 50%;
+  border-radius: 4px;
   margin-bottom: 1em;
 }
 header nav {
   display: flex;
 }
 header nav a {
-  margin: 0 1em;
+  padding: 5px 10px;
+  border: 2px solid #EBEDEF;
   text-decoration: none;
   color: #1B2631;
+}
+header nav a:hover {
+  border-bottom: 2px solid #1B2631;
 }
 
 main {
@@ -47,30 +55,66 @@ main {
   flex-direction: column;
   align-items: center;
   padding: 1em;
+  margin-top: 65px;
   background-color: #D98880;
-  background-image: url("assets/moroccan-flower.png");
+  background-image: url("../assets/my-little-plaid-dark.png");
 }
 main section {
   padding: 1em;
   width: 100%;
   max-width: 600px;
   border-radius: 5px;
-  box-shadow: 5px 10px #1B2631;
-  background-color: #D6DBDF;
+  box-shadow: 5px 5px 10px #1B2631;
+  margin-bottom: 1em;
+  background-color: #EBEDEF;
   color: #1B2631;
 }
 main section h2 {
   border-bottom: 2px solid #1B2631;
   margin-top: 0;
 }
+main section img {
+  width: 100%;
+}
 main section p {
   text-align: justify;
+}
+main section > a {
+  float: right;
+  padding: 5px 10px;
+  border-radius: 3px;
+  background-color: #34495E;
+  text-decoration: none;
+  color: #EBEDEF;
+}
+main section > a:hover {
+  background-color: #1B2631;
 }
 
 footer {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 1em;
   background-color: #1B2631;
-  color: #D6DBDF;
+  color: #EBEDEF;
+}
+footer img {
+  margin-bottom: 1em;
+}
+footer nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+footer nav a {
+  padding: 5px;
+  width: 100px;
+  text-align: center;
+  text-decoration: none;
+  color: inherit;
+}
+footer nav a:hover {
+  background-color: #EBEDEF;
+  color: #1B2631;
 }

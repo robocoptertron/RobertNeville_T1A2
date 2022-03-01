@@ -23,8 +23,13 @@ body {
 header {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  padding: 1em;
+  position: fixed;
+  top: 0;
+  padding: 0 1em;
+  width: 100%;
+  height: $header-height;
   background-color: $header-bg;
 
   * {
@@ -32,8 +37,7 @@ header {
   }
 
   img {
-    border: 2px solid $footer-bg;
-    border-radius: 50%;
+    border-radius: 4px;
     margin-bottom: 1em;
   }
 
@@ -41,9 +45,14 @@ header {
     display: flex;
 
     a {
-      margin: 0 1em;
+      padding: 5px 10px;
+      border: 2px solid $header-bg;
       text-decoration: none;
       color: $footer-bg;
+
+      &:hover {
+        border-bottom: 2px solid $footer-bg;
+      }
     }
   }
 }
@@ -54,15 +63,18 @@ main {
   flex-direction: column;
   align-items: center;
   padding: 1em;
+  margin-top: $header-height; // Header height
   background-color: $main-bg;
-  background-image: url('assets/moroccan-flower.png');
+  // Downloaded from: https://www.transparenttextures.com/
+  background-image: url('../assets/my-little-plaid-dark.png');
 
   section {
     padding: 1em;
     width: 100%;
     max-width: 600px;
     border-radius: 5px;
-    box-shadow: 5px 10px $footer-bg;
+    box-shadow: 5px 5px 10px $footer-bg;
+    margin-bottom: 1em;
     background-color: $header-bg;
     color: $footer-bg;
 
@@ -71,8 +83,25 @@ main {
       margin-top: 0;
     }
 
+    img {
+      width: 100%;
+    }
+
     p {
       text-align: justify;
+    }
+
+    > a {
+      float: right;
+      padding: 5px 10px;
+      border-radius: 3px;
+      background-color: $section-link-bg;
+      text-decoration: none;
+      color: $section-bg;
+
+      &:hover {
+        background-color: $section-text;
+      }
     }
   }
 }
@@ -81,6 +110,30 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 1em;
   background-color: $footer-bg;
   color: $footer-text;
+
+  img {
+    margin-bottom: 1em;
+  }
+
+  nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    a {
+      padding: 5px;
+      width: 100px;
+      text-align: center;
+      text-decoration: none;
+      color: inherit;
+    
+      &:hover {
+        background-color: $footer-text;
+        color: $footer-bg;
+      }
+    }
+  }
 }

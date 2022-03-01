@@ -1,4 +1,11 @@
-$header-bg: #D6DBDF;
+// Lengths:
+$header-height: 65px;
+
+// Colours:
+$header-bg: #EBEDEF;
 $main-bg: #D98880;
+$section-bg: $header-bg;
 $footer-bg: #1B2631;
-$footer-text: #D6DBDF;
+$section-text: $footer-bg;
+$footer-text: $header-bg;
+$section-link-bg: #34495E;
