@@ -76,7 +76,7 @@ main {
     box-shadow: 5px 5px 10px $footer-bg;
     margin-bottom: 1em;
     background-color: $header-bg;
-    color: $footer-bg;
+    color: $section-text;
 
     h2 {
       border-bottom: 2px solid $footer-bg;
@@ -95,13 +95,19 @@ main {
       float: right;
       padding: 5px 10px;
       border-radius: 3px;
-      background-color: $section-link-bg;
+      background-color: $section-text;
       text-decoration: none;
       color: $section-bg;
 
       &:hover {
-        background-color: $section-text;
+        background-color: $section-link-bg;
       }
+    }
+
+    > span {
+      display: block;
+      text-align: center;
+      color: $section-text;
     }
   }
 }
@@ -133,6 +139,82 @@ footer {
       &:hover {
         background-color: $footer-text;
         color: $footer-bg;
+      }
+    }
+  }
+}
+
+.contact {
+
+  fieldset {
+    display: flex;
+    width: 100%;
+    border: none;
+  }
+
+  label {
+    padding: 5px;
+    border: none;
+    background-color: $section-text;
+    text-align: center;
+    color: $section-bg;
+  }
+
+  input,
+  textarea {
+    border: 2px solid $section-text;
+    border-radius: 0;
+    outline: none;
+    color: $section-text;
+  }
+
+  .name,
+  .email {
+
+    label {
+      width: 70px;
+      border-top-left-radius: 3px;
+      border-bottom-left-radius: 3px;
+    }
+
+    input {
+      width: calc(100% - 70px);
+      border-top-right-radius: 3px;
+      border-bottom-right-radius: 3px;
+    }
+  }
+
+  .message {
+    flex-direction: column;
+
+    label {
+      width: 100%;
+      border-top-left-radius: 3px;
+      border-top-right-radius: 3px;
+    }
+
+    textarea {
+      width: 100%;
+      border-bottom-left-radius: 3px;
+      border-bottom-right-radius: 3px;
+      resize: vertical;
+    }
+  }
+
+  .buttons {
+    justify-content: space-evenly;
+
+    button {
+      padding: 10px;
+      width: 100px;
+      border: none;
+      border-radius: 3px;
+      background-color: $section-text;
+      color: $section-bg;
+      cursor: pointer;
+    
+      &:hover {
+        background-color: $section-link-bg;
       }
     }
   }
