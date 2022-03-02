@@ -1,15 +1,19 @@
 const router = require('express').Router();
 
 router.get('/', (req, res) => {
-  res.render('home', { title: 'Home | Portfolio'});
+  res.render('home', { title: 'Home | Portfolio' });
+});
+
+router.get('/about', (req, res) => {
+  res.render('about', { title: 'About | Portfolio' });
 });
 
 router.get('/blog', (req, res) => {
-  res.render('blog', { title: 'Blog | Portfolio'});
+  res.render('blog', { title: 'Blog | Portfolio' });
 });
 
 router.get('/contact', (req, res) => {
-  res.render('contact', { title: 'Contact | Portfolio'});
+  res.render('contact', { title: 'Contact | Portfolio' });
 });
 
 module.exports = router;
