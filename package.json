@@ -6,9 +6,9 @@
   "scripts": {
     "build": "sass --no-source-map src/scss/main.scss src/public/css/main.css",
     "build-watch": "sass --no-source-map --watch src/scss/main.scss src/public/css/main.css",
-    "dev-start": "cross-env NODE_ENV=development node src/index.js",
+    "dev-start": "cross-env NODE_ENV=development nodemon src/index.js",
     "dev": "concurrently \"npm:build-watch\" \"npm:dev-start\"",
-    "start": "node ./src/index.js"
+    "start": "node src/index.js"
   },
   "author": "Robert Neville",
   "license": "MIT",
