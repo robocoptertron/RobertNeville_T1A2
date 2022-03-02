@@ -232,7 +232,7 @@ footer nav a:hover {
   font-style: italic;
 }
 
-@media screen and (min-width: 500px) {
+@media only screen and (min-width: 500px) {
   .blog-post-link .header {
     flex-direction: row !important;
   }
