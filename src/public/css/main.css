@@ -194,6 +194,7 @@ footer nav a:hover {
   flex-direction: column;
   padding: 10px;
   border-radius: 4px;
+  margin-bottom: 1em;
   background-color: #1B2631;
   text-decoration: none;
   color: #EBEDEF;
