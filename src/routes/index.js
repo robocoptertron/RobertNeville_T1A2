@@ -16,4 +16,6 @@ router.get('/contact', (req, res) => {
   res.render('contact', { title: 'Contact | Portfolio' });
 });
 
+router.use('/blog-posts', require('./blog-posts'));
+
 module.exports = router;
