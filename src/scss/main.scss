@@ -15,6 +15,17 @@ body {
   src: url("assets/RobotoMono-Regular.ttf");
 }
 
+@keyframes spin {
+  0% { transform: rotateY(0deg); }
+  100% { transform: rotateY(360deg); }
+}
+
+@keyframes jiggle {
+  0% { transform: rotate(-1deg); }
+  25% { transform: rotate(2deg); }
+  50% { transform: rotate(-1deg); }
+}
+
 * {
   box-sizing: border-box;
   font-family: 'Roboto Mono', monospace;
@@ -33,6 +44,21 @@ header {
     user-select: none;
   }
 
+  .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid $header-text;
+    margin-bottom: 1em;
+
+    img:hover {
+      animation: spin 1s ease 1;       
+    }
+  }
+
   nav {
     display: flex;
 
@@ -40,10 +66,11 @@ header {
       padding: 5px 10px;
       border: 2px solid $header-bg;
       text-decoration: none;
-      color: $footer-bg;
+      color: $header-text;
 
       &:hover {
-        border-bottom: 2px solid $footer-bg;
+        border-bottom: 2px solid $header-text;
+        transition: all 0.4s ease;
       }
     }
   }
@@ -74,11 +101,11 @@ main {
     border-radius: 5px;
     box-shadow: 5px 5px 10px $footer-bg;
     margin-bottom: 1em;
-    background-color: $header-bg;
+    background-color: $section-bg;
     color: $section-text;
 
     h2 {
-      border-bottom: 2px solid $footer-bg;
+      border-bottom: 2px solid $section-text;
       margin-top: 0;
     }
 
@@ -94,12 +121,13 @@ main {
       float: right;
       padding: 5px 10px;
       border-radius: 3px;
-      background-color: $section-text;
+      background-color: $section-link-bg;
       text-decoration: none;
       color: $section-bg;
 
       &:hover {
-        background-color: $section-link-bg;
+        background-color: $section-link-bg-hover;
+        transition: all 0.4s ease;
       }
     }
 
@@ -136,8 +164,8 @@ footer {
       color: inherit;
     
       &:hover {
-        background-color: $footer-text;
-        color: $footer-bg;
+        background-color: $section-link-bg-hover;
+        transition: all 0.4s ease;
       }
     }
   }
@@ -157,12 +185,12 @@ footer {
   fieldset.error {
     
     label {
-      background-color: #C0392B;
+      background-color: $error-text;
     }
 
     input,
     textarea {
-      border: 2px solid #C0392B;
+      border: 2px solid $error-border;
     }
   }
 
@@ -184,7 +212,7 @@ footer {
 
   input::placeholder,
   textarea::placeholder {
-    color: #C0392B;
+    color: $error-text;
   }
 
   .name,
@@ -250,29 +278,27 @@ footer {
   }
 
   .message-card.error {
-    border: 2px solid #C0392B;
-    background-color: #F5B7B1;
-    color: #C0392B;
+    border: 2px solid $error-border;
+    background-color: $error-bg;
+    color: $error-text;
 
     button {
-      color: #C0392B;
 
       &:hover {
-        background-color: #F1948A;
+        background-color: $error-bg-hover;
       }
     }
   }
 
   .message-card.success {
-    border: 2px solid #16A085;
-    background-color: #A9DFBF;
-    color: #16A085;
+    border: 2px solid $success-border;
+    background-color: $success-bg;
+    color: $success-text;
 
     button {
-      color: #16A085;
 
       &:hover {
-        background-color: #7DCEA0;
+        background-color: $success-bg-hover;
       }
     }
   }
@@ -282,15 +308,17 @@ footer {
 
     button {
       padding: 10px;
+
       width: 100px;
       border: none;
       border-radius: 3px;
-      background-color: $section-text;
+      background-color: $section-link-bg;
       color: $section-bg;
       cursor: pointer;
     
       &:hover {
-        background-color: $section-link-bg;
+        background-color: $section-link-bg-hover;
+        transition: all 0.4s ease;
       }
     }
   }
@@ -314,7 +342,7 @@ footer {
     border-radius: 50%;
     margin-bottom: 1em;
     background-color: $section-text;
-    animation: spin 1s linear infinite;
+    animation: spin 1s ease infinite;
 
     img {
       height: 50px;
@@ -324,11 +352,6 @@ footer {
   .message {
     color: $section-text;
   }
-}
-
-@keyframes spin {
-  0% { transform: rotateY(0deg); }
-  100% { transform: rotateY(360deg); }
 }
 
 .blog-posts {
@@ -341,12 +364,15 @@ footer {
     padding: 10px;
     border-radius: 4px;
     margin-bottom: 1em;
-    background-color: $section-text;
+    background-color: $blog-post-link-bg;
     text-decoration: none;
-    color: $section-bg;
+    color: $section-text;
 
     &:hover {
       background-color: $section-link-bg;
+      color: $section-bg;
+      transition: all 0.4s ease;
+      animation: jiggle 0.5s ease 1;
     }
 
     .header {

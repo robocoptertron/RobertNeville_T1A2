@@ -12,6 +12,25 @@ body {
   font-family: "Roboto Mono", monospace;
   src: url("assets/RobotoMono-Regular.ttf");
 }
+@keyframes spin {
+  0% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
+}
+@keyframes jiggle {
+  0% {
+    transform: rotate(-1deg);
+  }
+  25% {
+    transform: rotate(2deg);
+  }
+  50% {
+    transform: rotate(-1deg);
+  }
+}
 * {
   box-sizing: border-box;
   font-family: "Roboto Mono", monospace;
@@ -29,6 +48,19 @@ header {
 header * {
   user-select: none;
 }
+header .logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid #1B2631;
+  margin-bottom: 1em;
+}
+header .logo img:hover {
+  animation: spin 1s ease 1;
+}
 header nav {
   display: flex;
 }
@@ -40,6 +72,7 @@ header nav a {
 }
 header nav a:hover {
   border-bottom: 2px solid #1B2631;
+  transition: all 0.4s ease;
 }
 
 #fixed-background {
@@ -88,6 +121,7 @@ main section > a {
 }
 main section > a:hover {
   background-color: #2E4053;
+  transition: all 0.4s ease;
 }
 main section > span {
   display: block;
@@ -119,8 +153,8 @@ footer nav a {
   color: inherit;
 }
 footer nav a:hover {
-  background-color: #EBEDEF;
-  color: #1B2631;
+  background-color: #2E4053;
+  transition: all 0.4s ease;
 }
 
 #contact fieldset {
@@ -214,18 +248,12 @@ footer nav a:hover {
   background-color: #F5B7B1;
   color: #C0392B;
 }
-#contact .message-card.error button {
-  color: #C0392B;
-}
 #contact .message-card.error button:hover {
   background-color: #F1948A;
 }
 #contact .message-card.success {
   border: 2px solid #16A085;
   background-color: #A9DFBF;
-  color: #16A085;
-}
-#contact .message-card.success button {
   color: #16A085;
 }
 #contact .message-card.success button:hover {
@@ -245,6 +273,7 @@ footer nav a:hover {
 }
 #contact .buttons button:hover {
   background-color: #2E4053;
+  transition: all 0.4s ease;
 }
 
 .sending {
@@ -265,7 +294,7 @@ footer nav a:hover {
   border-radius: 50%;
   margin-bottom: 1em;
   background-color: #1B2631;
-  animation: spin 1s linear infinite;
+  animation: spin 1s ease infinite;
 }
 .sending .spinner img {
   height: 50px;
@@ -274,14 +303,6 @@ footer nav a:hover {
   color: #1B2631;
 }
 
-@keyframes spin {
-  0% {
-    transform: rotateY(0deg);
-  }
-  100% {
-    transform: rotateY(360deg);
-  }
-}
 .blog-posts {
   display: flex;
   flex-direction: column;
@@ -292,12 +313,15 @@ footer nav a:hover {
   padding: 10px;
   border-radius: 4px;
   margin-bottom: 1em;
-  background-color: #1B2631;
+  background-color: #AEB6BF;
   text-decoration: none;
-  color: #EBEDEF;
+  color: #1B2631;
 }
 .blog-posts .blog-post-link:hover {
-  background-color: #2E4053;
+  background-color: #1B2631;
+  color: #EBEDEF;
+  transition: all 0.4s ease;
+  animation: jiggle 0.5s ease 1;
 }
 .blog-posts .blog-post-link .header {
   display: flex;

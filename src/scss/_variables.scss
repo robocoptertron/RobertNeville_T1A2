@@ -1,9 +1,20 @@
 
 // Colours:
 $header-bg: #EBEDEF;
+$header-text: #1B2631;
 $main-bg: #D98880;
-$section-bg: $header-bg;
-$footer-bg: #1B2631;
-$section-text: $footer-bg;
+$footer-bg: $header-text;
 $footer-text: $header-bg;
-$section-link-bg: #2E4053;
+$section-bg: $header-bg;
+$section-text: $header-text;
+$section-link-bg: $footer-bg;
+$section-link-bg-hover: #2E4053;
+$error-border: #C0392B;
+$error-bg: #F5B7B1;
+$error-bg-hover: #F1948A;
+$error-text: $error-border;
+$success-border: #16A085;
+$success-bg: #A9DFBF;
+$success-bg-hover: #7DCEA0;
+$success-text: $success-border;
+$blog-post-link-bg: #AEB6BF;
