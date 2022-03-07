@@ -54,12 +54,10 @@ header .logo {
   align-items: center;
   width: 50px;
   height: 50px;
+  border: 5px solid #D6DBDF;
   border-radius: 50%;
-  border: 2px solid #1B2631;
   margin-bottom: 1em;
-}
-header .logo img:hover {
-  animation: spin 1s ease 1;
+  background-color: #1B2631;
 }
 header nav {
   display: flex;
@@ -290,7 +288,7 @@ footer nav a:hover {
   align-items: center;
   width: 100px;
   height: 100px;
-  border: 10px solid #85929E;
+  border: 10px solid #D6DBDF;
   border-radius: 50%;
   margin-bottom: 1em;
   background-color: #1B2631;
