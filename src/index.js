@@ -1,3 +1,7 @@
+if (process.env.NODE_ENV === 'development') {
+  require('dotenv').config();
+}
+
 const path = require('path');
 const express = require('express');
 const { engine } = require('express-handlebars');
@@ -11,6 +15,10 @@ const port = process.env.PORT || 3000;
 app.engine('.hbs', engine({ extname: '.hbs'}));
 app.set('view engine', '.hbs');
 app.set('views', path.resolve(__dirname, 'views'));
+
+// Body parser:
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // Enforce HTTPS:
 app.enable('trust proxy');
