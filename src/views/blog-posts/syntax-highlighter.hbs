@@ -2,5 +2,48 @@
   <section>
     <h2>IDE: Syntax Highlighter</h2>
     <img src="/assets/syntax-highlighter-blog-post-thumbnail.png" alt="Screenshot of JavaScript Code"/>
+    <div class="date-time">
+      <span class="date">04/03/2022</span>
+      <span class="time">13:56</span>
+    </div>
+    <p>
+      I discovered <a href="https://www.electronjs.org/">Electron.js</a> in 2020 and I instantly 
+      fell in love with it! It enables you to build desktop apps using HTML, CSS, and JavaScript,
+      so it's perfect for web developers looking to diversify.
+    </p>
+    <p>
+      After I'd published <a href="https://coloureyes.herokuapp.com">Coloureyes</a>, I made another
+      site for my one of my music projects - <a href="https://ventrebor.herokuapp.com">ventrebor.com</a>.
+      This site had multiple pages and included a nice little contact form. I definitely improved my
+      Web dev skills working on it, but I wanted to sink my teeth into something more complex.
+    </p>
+    <p>
+      In the end, I decided to rebuild my C++ IDE using Electron! Because I loved the way that you
+      can construct an app OOP style in Qt, tried my hand at using custom HTML components for the
+      GUI - it all fit together so well! I even ALMOST completed a 'universal' syntax highlighter!
+    </p>
+    <p>
+      When I say 'ALMOST', I mean that it was working for nearly every scenario, except for some
+      recursive situations - namely, JavaScript template strings.
+    </p>
+    <p>
+      The way I designed it involved configuring the highlighter with a set of rules for a particular
+      language, and the highlighter would parse the text in an open editor - applying styles to each
+      resulting token, according to the rules for that language. It was probably not very fast
+      or intelligent as far as syntax highlighting is concerned, but, basically, it would analyse the
+      text from start to finish - character by charater - by testing the current 'token' against all 
+      the highlighting rules. If a rule matched, it would add the token to an array, but if it didn't, 
+      it would add the current character to the current token, and try again (and again, and again, etc.)
+      until a rule matched or found a space. 
+    </p>
+    <p>
+      Of course, some rules stipulated that there must be a lookahead
+      sequence (for instance, function calls must consist of an identifier FOLLOWED BY opening and closing
+      parentheses), and it get's more complex with escape sequences in strings and such, 
+      but that's the essence of how the highlighter operated.
+    </p>
+    <p>
+      There's more work to be done on this aspect of the IDE, but I am very proud of my progress!
+    </p>
   </section>
 </main>
