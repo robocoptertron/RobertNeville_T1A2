@@ -363,6 +363,8 @@ footer nav a:hover {
 .blog-posts .blog-post-link {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  position: relative;
   padding: 10px;
   border-radius: 4px;
   margin-bottom: 1em;
@@ -376,47 +378,47 @@ footer nav a:hover {
   transition: all 0.4s ease;
   animation: jiggle 0.5s ease 1;
 }
-.blog-posts .blog-post-link .header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
+.blog-posts .blog-post-link .id {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  font-size: 0.75em;
 }
-.blog-posts .blog-post-link .header .thumbnail {
+.blog-posts .blog-post-link .thumbnail {
   width: 100px;
   height: 100px;
   border: 2px solid #EBEDEF;
   border-radius: 50%;
 }
-.blog-posts .blog-post-link .header > div {
+.blog-posts .blog-post-link > div {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
-.blog-posts .blog-post-link .header > div .title {
+.blog-posts .blog-post-link > div .title {
   margin: 1em 0;
   word-wrap: break-word;
   text-align: center;
   font-size: 1.5em;
 }
-.blog-posts .blog-post-link .header > div .date {
+.blog-posts .blog-post-link > div .date {
   text-align: center;
   font-size: 1em;
   font-style: italic;
 }
 
 @media only screen and (min-width: 500px) {
-  .blog-post-link .header {
+  .blog-post-link {
     flex-direction: row !important;
   }
-  .blog-post-link .header * {
+  .blog-post-link * {
     text-align: left !important;
   }
-  .blog-post-link .header > div {
+  .blog-post-link > div {
     margin-left: 1em;
   }
-  .blog-post-link .header > div .title {
+  .blog-post-link > div .title {
     margin: 0 !important;
   }
 }
