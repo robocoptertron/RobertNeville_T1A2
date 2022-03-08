@@ -7,6 +7,25 @@
   <title>{{ title }}</title>
   <link rel="icon" href="/assets/scribble-1B2631.svg">
   <link rel="stylesheet" href="/css/main.css">
+  <noscript>
+    <style>
+      header {
+        flex-direction: column !important;
+      }
+
+      header .hamburger {
+        display: none !important;
+      }
+
+      header .logo {
+        margin-bottom: 1em !important;
+      }
+
+      header nav {
+        display: flex !important;
+      }
+    </style>
+  </noscript>
 </head>
 <body>
   {{> header }}
