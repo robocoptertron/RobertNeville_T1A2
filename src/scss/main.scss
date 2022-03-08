@@ -33,8 +33,7 @@ body {
 
 header {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   padding: 1em;
   width: 100%;
@@ -52,12 +51,11 @@ header {
     height: 50px;
     border: 2.5px solid $header-text;
     border-radius: 50%;
-    margin-bottom: 1em;
     background-color: #D6DBDF;
   }
 
   nav {
-    display: flex;
+    display: none;
 
     a {
       padding: 5px 10px;
@@ -70,6 +68,74 @@ header {
         transition: all 0.4s ease;
       }
     }
+  }
+
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+
+    .line {
+      width: 100%;
+      height: 6px;
+      background-color: $header-text;
+    }
+  }
+}
+
+@media only screen and (min-width: 500px) {
+
+  header {
+    flex-direction: column !important;
+
+    .logo {
+      margin-bottom: 1em;
+    }
+
+    .hamburger {
+      display: none;
+    }
+
+    nav {
+      display: flex;
+    }
+  }  
+}
+
+#menu {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  padding: 1em;
+  background-color: $header-bg;
+  color: $header-text;
+
+  nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    a {
+      padding: 5px;
+      width: 100px;
+      text-align: center;
+      text-decoration: none;
+      color: inherit;
+
+      &:hover {
+        background-color: #FFF;
+        transition: all 0.4s ease;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 500px) {
+  #menu {
+    display: none;
   }
 }
 

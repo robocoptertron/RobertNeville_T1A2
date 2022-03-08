@@ -14,7 +14,7 @@
 
     fields.forEach(field => {
       if (field.value.length === 0) {
-        // It's empty, so display error
+        // It's empty, so display error styles
         applyErrorStyles(field, 'Required');
         emptyField = true;
       }
