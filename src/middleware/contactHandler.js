@@ -31,10 +31,21 @@ module.exports = (req, res) => {
   transporter.sendMail(mailOptions, error => {
     if (error) {
       const message = 'There was a problem sending your message';
+      if (!req.xhr) {
+        return res.render('contact', {
+          error: message
+        });
+      }
       return res.send({ error: message });
     }
 
     const message = 'Message sent successfully!';
+
+    if (!req.xhr) {
+      return res.render('contact', {
+        message
+      });
+    }
 
     return res.send({ message });
   });
