@@ -420,3 +420,11 @@ footer nav a:hover {
     margin: 0 !important;
   }
 }
+.date-time {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.date-time * {
+  padding: 1em;
+}
