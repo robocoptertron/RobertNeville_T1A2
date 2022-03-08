@@ -5,14 +5,14 @@ module.exports = (req, res) => {
   const { name, email, message } = req.body;
 
   const emailText = 
-  'Hey Ven!' +
+  'Hey Rob!' +
   `\n\n${name} just sent you the following message through ` +
-  `the contact form on ventrebor.com:` +
+  `the contact form on your portfolio site:` +
   `\n\n${message}` +
   `\n\nEND OF MESSAGE` +
   `\n\nTheir email address is: ${email}` +
   `\n\nAll the best,` +
-  `\n\nThe ventrebor.com server`;
+  `\n\nYour portfolio's mailbot. Bleep blop bloop!`;
 
   const transporter = nodemailer.createTransport({
     host: config.host,
