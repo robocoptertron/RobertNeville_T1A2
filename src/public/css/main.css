@@ -288,10 +288,10 @@ footer nav a:hover {
   align-items: center;
   width: 100px;
   height: 100px;
-  border: 10px solid #D6DBDF;
+  border: 5px solid #1B2631;
   border-radius: 50%;
   margin-bottom: 1em;
-  background-color: #1B2631;
+  background-color: #D6DBDF;
   animation: spin 1s ease infinite;
 }
 .sending .spinner img {

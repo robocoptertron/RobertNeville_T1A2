@@ -36,7 +36,7 @@
       removeErrorStyles(field);
     });
 
-    clearErrorMessage();
+    clearMessage();
 
     submitForm();
   });
@@ -46,7 +46,7 @@
       removeErrorStyles(field);
     });
 
-    clearErrorMessage();
+    clearMessage();
   });
 
   fields.forEach(field => {
@@ -71,20 +71,24 @@
   }
 
   function showMessage(message, type) {
-    clearErrorMessage();
+    clearMessage();
 
     const messageCard = document.createElement('div');
     messageCard.classList.add('message-card');
 
+    let imgSrc;
+
     switch (type) {
       case 'success':
-        messageCard.classList.add('success');  
+        messageCard.classList.add('success');
+        imgSrc = '/assets/close-16A085.svg';  
         break;
       case 'warning':
         messageCard.classList.add('warning');
         break;
       case 'error':
         messageCard.classList.add('error');
+        imgSrc = '/assets/close-C0392B.svg';
         break;
     }
 
@@ -95,7 +99,7 @@
       messageCard.remove();
     });
     const img = document.createElement('img');
-    img.src = '/assets/close-C0392B.svg';
+    img.src = imgSrc;
     img.alt = 'Close icon';
     closeButton.appendChild(img);
 
@@ -105,7 +109,7 @@
     form.insertBefore(messageCard, buttonsFieldset);
   }
 
-  function clearErrorMessage() {
+  function clearMessage() {
     const visibleMessage = document.querySelector('.message-card');
     if (visibleMessage) {
       visibleMessage.remove();
@@ -123,7 +127,7 @@
     sendingDiv.appendChild(spinner);
 
     const spinnerImg = document.createElement('img');
-    spinnerImg.src = '/assets/scribble-EBEDEF.svg';
+    spinnerImg.src = '/assets/scribble-1B2631.svg';
     spinner.appendChild(spinnerImg);
 
     const message = document.createElement('span');
@@ -180,8 +184,6 @@
       removeErrorStyles(field);
       field.value = '';
     });
-
-    clearErrorMessage();
   }
 
 })();
