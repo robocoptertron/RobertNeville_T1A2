@@ -47,16 +47,6 @@ header {
 header * {
   user-select: none;
 }
-header .logo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 50px;
-  height: 50px;
-  border: 2.5px solid #1B2631;
-  border-radius: 50%;
-  background-color: #D6DBDF;
-}
 header nav {
   display: none;
 }
@@ -88,7 +78,7 @@ header .hamburger .line {
   header {
     flex-direction: column !important;
   }
-  header .logo {
+  header img {
     margin-bottom: 1em;
   }
   header .hamburger {
@@ -191,6 +181,7 @@ footer {
   color: #EBEDEF;
 }
 footer img {
+  height: 50px;
   margin-bottom: 1em;
 }
 footer nav {
@@ -341,6 +332,7 @@ footer nav a:hover {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 10px;
   width: 100px;
   height: 100px;
   border: 5px solid #1B2631;
@@ -348,9 +340,6 @@ footer nav a:hover {
   margin-bottom: 1em;
   background-color: #D6DBDF;
   animation: spin 1s ease infinite;
-}
-.sending .spinner img {
-  height: 50px;
 }
 .sending .message {
   color: #1B2631;

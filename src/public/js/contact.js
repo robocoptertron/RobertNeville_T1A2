@@ -127,7 +127,8 @@
     sendingDiv.appendChild(spinner);
 
     const spinnerImg = document.createElement('img');
-    spinnerImg.src = '/assets/scribble-1B2631.svg';
+    spinnerImg.src = '/assets/favicon.svg';
+    spinnerImg.alt = 'logo';
     spinner.appendChild(spinnerImg);
 
     const message = document.createElement('span');
