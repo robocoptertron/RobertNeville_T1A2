@@ -57,7 +57,7 @@ The blog page contains links to each of the included blog posts.
 
 The target audience of this website is prospective employers and other 
 developers. It has been designed to communicated my skills as a developer so 
-that I may 
+that I may secure employment in the industry.
 
 ## Tech Stack
 
