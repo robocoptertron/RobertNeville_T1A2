@@ -7,6 +7,8 @@ studies.
 The code for this repository can be found on GitHub at [RobertNeville_T1A2](https://github.com/robocoptertron/RobertNeville_T1A2), and the site has 
 been deployed at [rncode.herokuapp.com](https://rncode.herokuapp.com).
 
+A mobile-first approach has been taken for this website.
+
 ## Scripts
 
 To install the project, run the following command:
@@ -52,6 +54,31 @@ The blog page contains links to each of the included blog posts.
 ## Sitemap
 
 ## Screenshots
+
+The following screenshots have been included to give the reader an idea of 
+the website's appearance:
+
+### Header On Small Devices
+
+![Top of home page on smaller devices](/docs/home-page-header-sm.png)
+
+![Top of home page with menu expanded](/docs/home-page-menu.png)
+
+### Header On Larger Devices
+
+![Top of home page on larger devices](/docs/home-page-header-lg.png)
+
+### Footer On All Device Types
+
+![Bottom of home page on all device types](/docs/home-page-footer.png)
+
+### Blog Page On Small Devices
+
+![Blog page on small device types](/docs/blog-page-sm.png)
+
+### Blog Page On Large Devices
+
+![Blog page on large device types](/docs/blog-page-lg.png)
 
 ## Target Audience
 
