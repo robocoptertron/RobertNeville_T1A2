@@ -96,3 +96,5 @@ process; `concurrently` is used for running multiple npm scripts in
 parallel, `cross-env` and `dotenv` are both used for configuring environment 
 variables, and `nodemon` is used for refreshing the server when files are 
 edited.
+
+The site has been deployed on [Heroku](https://rncode.herokuapp.com).
