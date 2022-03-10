@@ -43,7 +43,108 @@
       but that's the essence of how the highlighter operated.
     </p>
     <p>
+      Below, I have included a snippet from the highlighter code (it's the main parsing function):
+    </p>
+    <pre>
+      <code class="language-javascript">
+parseText(text) {
+  this._text = text;
+  this._currentToken = '';
+  this._subtokens = [];
+  this._matchedRule = null;
+  this._tokens = [];
+  this._i = 0;
+
+  let followingText = null;
+  let token = null;
+  let newRule = null;
+  
+  if (this._rules.length === 0) {
+    this._addToken(this._text, {}); 
+    return this._tokens; 
+  }
+
+  while (this._i &lt; this._text.length) {
+
+    if (!this._matchedRule) {
+      // Test the current token plus the character
+      // at the current index against the rule
+      token = this._currentToken + this._text[this._i];
+      followingText = this._text.slice(this._i + 1);
+      newRule = this._lookForNewRule(token, followingText);
+      if (!newRule) {
+        this._currentToken += this._text[this._i];
+      } else {
+        this._processNewRule(newRule, token, followingText);
+      }
+    } else {
+      const currentRuleStillMatches = matchesRulePattern(this._currentToken + this._text[this._i], this._matchedRule);
+      if (!currentRuleStillMatches) {
+        // Check to see if it matches another rule
+        token = this._currentToken + this._text[this._i];
+        followingText = this._text.slice(this._i + 1);
+        newRule = this._lookForNewRule(token, followingText);
+        if (newRule) {
+          // New rule found
+          this._processNewRule(newRule, token, followingText);
+        } else {
+          // No new rule found
+          const startIndex = this._i - this._currentToken.length + this._prevTokenLength;
+          this._addToken(
+            this._currentToken, 
+            this._matchedRule.styles,
+            startIndex, 
+            this._subtokens.length > 0 ? this._subtokens : null
+          );
+          this._currentToken = '';
+          this._matchedRule = null;
+          this._i -= 1;
+        }
+      } else {
+        // Check to see if it matches another rule:
+        token = this._currentToken + this._text[this._i];
+        followingText = this._text.slice(this._i + 1);
+        newRule = this._lookForNewRule(token, followingText);
+        if (newRule) {
+          // New rule found
+          this._processNewRule(newRule, token, followingText);
+        } else {
+          // No new rule found
+          this._processCurrentRule();
+        }
+      }
+    }
+
+    if (this._i === this._text.length - 1) {
+      const startIndex = this._i - this._currentToken.length + this._prevTokenLength + 1;
+      if (this._matchedRule &amp;&amp; this._currentToken.length > 0) {
+        this._addToken(
+          this._currentToken, 
+          this._matchedRule.styles,
+          startIndex, 
+          this._subtokens.length > 0 ? this._subtokens : null
+        );
+      } else {
+        if (this._currentToken.length > 0) {
+          this._addToken(this._currentToken, {}, startIndex);
+        }
+      }
+    }
+
+    this._i += 1;
+  }
+
+  this._prevTokenLength = 0; // For use in recursion
+
+  this._tokens = flattenTokens(this._tokens);
+
+  return this._tokens;
+}
+      </code>
+    </pre>
+    <p>
       There's more work to be done on this aspect of the IDE, but I am very proud of my progress!
     </p>
   </section>
 </main>
+<script>hljs.highlightAll();</script>
