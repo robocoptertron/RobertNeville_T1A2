@@ -34,5 +34,63 @@
     <p>
       I might even remake it with Electron one day... ;)
     </p>
+    <h3>Snippets</h3>
+    <figure>
+      <figcaption>HostsThread.py</figcaption>
+      <pre>
+        <code class="language-python">
+import sys
+import errno
+import netifaces
+import os
+import socket
+
+from PyQt5 import QtCore
+from PyQt5 import QtGui
+from PyQt5 import QtWidgets
+
+class HostsThread(QtCore.QThread):
+
+    progressChanged = QtCore.pyqtSignal(int)
+    progressFinished = QtCore.pyqtSignal(list)
+
+    def run(self):
+        broadCastAddress = self.getBroadCastAddress().split(".")
+        broadCastAddress.pop(3)
+        broadCastAddress = ".".join(broadCastAddress)
+
+        self.getHosts(broadCastAddress)
+
+    def getBroadCastAddress(self):
+        for iface in netifaces.interfaces():
+            if iface == 'lo' or iface.startswith('vbox'):
+                continue
+            iface_details = netifaces.ifaddresses(iface)
+            if netifaces.AF_INET in iface_details:
+                return iface_details[netifaces.AF_INET][0]["broadcast"]
+
+    def getHosts(self, broadCastAddress):
+        hosts = []
+        i = 1
+        while i &lt; 255:
+            host_addr = broadCastAddress + "." + str(i)
+            try:
+                tmp = socket.gethostbyaddr(host_addr)
+                hosts.append((tmp[0].replace(".gateway", ""), tmp[2][0]))
+                self.progressChanged.emit(i)
+                i += 1
+            except socket.herror as error:
+                # Respond to unknown host error:
+                if error.errno == 1:
+                    self.progressChanged.emit(i)
+                    i += 1
+                    continue
+
+        self.progressFinished.emit(hosts)
+        </code>
+      </pre>
+    </figure>
+    
   </section>
 </main>
+<script>hljs.highlightAll();</script>

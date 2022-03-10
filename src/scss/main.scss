@@ -522,6 +522,17 @@ footer {
   }
 }
 
+figure {
+  width: 100%;
+  margin: 0;
+}
+
+pre,
+code {
+  width: 100%;
+  margin: 0;
+}
+
 .release {
   display: flex;
   flex-direction: column;

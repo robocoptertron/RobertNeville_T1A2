@@ -37,5 +37,132 @@
       can discover and save colours, and group them into palettes. The colour picker can be switched
       between HEX and RGB mode, and you can easily copy codes for use in design and Web development.
     </p>
+    <h3>Snippets</h3>
+    <figure>
+      <figcaption>app.js</figcaption>
+      <pre>
+        <code class="language-javascript">
+import ConfigStore from './ConfigStore.js';
+import RGBStore from "./RGBStore.js";
+import PaletteStore from './PaletteStore.js';
+
+import { 
+  initColorPicker, 
+  updateColorPicker 
+} from "./color-picker.mjs";
+
+import { 
+  initCollections, 
+  refreshCollections 
+} from "./collections.mjs";
+
+import { 
+  initPaletteViewer, 
+  updatePaletteViewer, 
+  clearPaletteViewer,
+} from './palette-viewer.mjs';
+
+(function() {
+  const configStore = new ConfigStore();
+  const rgbStore = new RGBStore();
+  const paletteStore = new PaletteStore();
+
+  initColorPicker(configStore);
+  initCollections();
+  initPaletteViewer();
+
+  document.addEventListener('favourite-selected', handleFavouriteSelected);
+  document.addEventListener('palette-added', handlePaletteAdded);
+  document.addEventListener('palette-selected', handlePaletteSelected);
+  document.addEventListener('back-to-palettes', handleBackToPalettes);
+  document.addEventListener('palette-color-selected', handlePaletteColorSelected);
+  document.addEventListener('confirm-palette-deletion', handleConfirmPaletteDeletion);
+
+  function handleFavouriteSelected(event) {
+    const favouriteHex = event.detail;
+    rgbStore.updateFromFullHex(favouriteHex);
+    updateColorPicker(configStore, rgbStore);
+  }
+
+  function handlePaletteAdded(event) {
+    const paletteName = event.detail;
+    const paletteViewerDiv = document.querySelector('#palette-viewer');
+    if (paletteViewerDiv.style.display !== 'none') {
+      updatePaletteViewer(paletteName);
+    }
+  }
+
+  function handlePaletteSelected(event) {
+    const paletteName = event.detail;
+    updatePaletteViewer(paletteName);
+    hideCollections();
+    showPaletteViewer();
+  }
+
+  function handleBackToPalettes() {
+    hidePaletteViewer();
+    showCollections();
+  }
+
+  function handlePaletteColorSelected(event) {
+    const colorHex = event.detail;
+    rgbStore.updateFromFullHex(colorHex);
+    updateColorPicker(configStore, rgbStore);
+  }
+
+  function handleConfirmPaletteDeletion(event) {
+    const paletteName = event.detail;
+    const modal = document.querySelector('#confirm-palette-deletion-modal');
+    const paragraph = modal.querySelector('p');
+    const yesButton = modal.querySelector('.yes');
+    const noButton = modal.querySelector('.no');
+
+    paragraph.innerHTML = `Are you sure you want to delete '${paletteName}'?`;
+
+    yesButton.addEventListener('click', handleYesButtonClick);
+    noButton.addEventListener('click', handleNoButtonClick);
+
+    modal.style.display = 'flex';
+
+    function handleYesButtonClick() {
+      modal.style.display = 'none';
+      paletteStore.removePalette(paletteName);
+      hidePaletteViewer();
+      showCollections();
+      yesButton.removeEventListener('click', handleYesButtonClick);
+    }
+
+    function handleNoButtonClick() {
+      modal.style.display = 'none';
+      paragraph.innerHTML = '';
+    }
+  } 
+
+  function hideCollections() {
+    const collectionsDiv = document.querySelector('#collections');
+    collectionsDiv.style.display = 'none';
+  }
+
+  function showCollections() {
+    refreshCollections();
+    const collectionsDiv = document.querySelector('#collections');
+    collectionsDiv.style.display = 'flex';
+  }
+
+  function hidePaletteViewer() {
+    const paletteViewerDiv = document.querySelector('#palette-viewer');
+    paletteViewerDiv.style.display = 'none';
+    clearPaletteViewer();
+  }
+
+  function showPaletteViewer() {
+    const paletteViewerDiv = document.querySelector('#palette-viewer');
+    paletteViewerDiv.style.display = 'flex';
+  }
+})();
+        </code>
+      </pre>
+    </figure>
   </section>
 </main>
+<script>hljs.highlightAll();</script>

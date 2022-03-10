@@ -21,5 +21,82 @@
       I've also managed to structure the project a bit more 'professionally', and I'm much happier
       with it!
     </p>
+    <h3>Snippets</h3>
+    <figure>
+      <figcaption>App.ts</figcaption>
+      <pre>
+        <code class="language-javascript">
+import { applyStyles } from './helpers';
+import Main from './components/Main';
+import StatusBar from './components/StatusBar';
+
+const styles = {
+  display: 'flex',
+  flexDirection: 'column',
+  boxSizing: 'border-box',
+  padding: 0,
+  maxWidth: '100%',
+  height: '100vh',
+  maxHeight: '100vh',
+  margin: 0,
+  overflow: 'hidden'
+};
+
+export default class App {
+  private _main: Main;
+  private _statusbar: StatusBar;
+
+  constructor() {
+    this.initUI();
+    this.reopenFilesFromLastUse();
+  }
+
+  private initUI() {
+    const body = document.querySelector('body');
+
+    this._main = new Main();
+    this._statusbar = new StatusBar();
+
+    body.appendChild(this._main);
+    body.appendChild(this._statusbar);
+
+    applyStyles(body, styles);
+
+    document.addEventListener('new-file-requested', this.onNewFileRequested.bind(this));
+    document.addEventListener('open-file-requested', this.onOpenFileRequested.bind(this))
+  }
+
+  onNewFileRequested() {
+    this._main.newFile();
+  }
+
+  onOpenFileRequested() {
+    const filename = window.api.dialogs.showOpenFileDialog();
+
+    if (!filename) {
+      return;
+    }
+
+    this._main.openFile(filename);
+  }
+
+  onWindowCloseRequested() {
+    const proceed = this._main.saveUnsavedFiles();
+    if (proceed) {
+      window.close();
+    }
+  }
+
+  private reopenFilesFromLastUse() {
+    const filenames = window.api.config.openFiles.all();
+    filenames.forEach(filename => {
+      this._main.openFile(filename);
+    });
+  }
+}
+        </code>
+      </pre>
+    </figure>
   </section>
 </main>
+<script>hljs.highlightAll();</script>

@@ -33,5 +33,54 @@
       I got to the stage where I was ready to start implementing syntax highlighting, but then I became 
       preoccupied with UNI and did not progress any further.
     </p>
+    <h3>Snippets</h3>
+    <figure>
+      <figcaption>main.cpp</figcaption>
+      <pre>
+        <code class="language-c++">
+#include "MainWindow.h"
+
+#include &lt;QApplication>
+#include &lt;QFile>
+#include &lt;QJsonDocument>
+#include &lt;QDebug>
+
+QString readTextFile(QString);
+
+int main(int argc, char *argv[])
+{
+    QApplication app(argc, argv);
+
+    // Set stylesheet:
+    QString stylesheet = readTextFile(":/styles/global.css");
+    if (stylesheet.length() > 0) app.setStyleSheet(stylesheet);
+
+    // Load config:
+    QString configString = readTextFile(":/config/app.config.json");
+    QJsonDocument configDocument = QJsonDocument::fromJson(configString.toUtf8());
+    QJsonObject config = configDocument.object();
+
+    MainWindow window(config);
+    window.show();
+
+    return app.exec();
+}
+
+QString readTextFile(QString path)
+{
+    QFile file(path);
+
+    if (file.open(QIODevice::ReadOnly | QIODevice::Text))
+    {
+        QTextStream in(&amp;file);
+        return in.readAll();
+    }
+
+    return "";
+}
+        </code>
+      </pre>
+    </figure>
   </section>
 </main>
+<script>hljs.highlightAll();</script>
