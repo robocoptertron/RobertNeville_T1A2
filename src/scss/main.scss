@@ -448,11 +448,11 @@ footer {
     margin-bottom: 1em;
     background-color: $blog-post-link-bg;
     text-decoration: none;
-    color: $section-text;
+    color: $blog-post-text;
 
     &:hover {
-      background-color: $section-link-bg;
-      color: $section-bg;
+      background-color: $blog-post-link-bg-hover;
+      color: $blog-post-text-hover;
       transition: all 0.4s ease;
       animation: jiggle 0.5s ease 1;
     }
@@ -519,5 +519,116 @@ footer {
 
   * {
     padding: 1em;
+  }
+}
+
+.release {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding: 1em;
+  border-radius: 3px;
+  margin-bottom: 1em;
+  background-color: $release-bg;
+  color: $release-text;
+
+  &:hover {
+    background-color: $release-bg-hover;
+    color: $release-text-hover;
+    transition: all 0.4s ease;
+
+    .toggle span {
+      transform: rotate(-90deg);
+      transition: all 0.4s ease;
+    }
+
+    .track-list ul {
+      display: block;
+      transition: all 0.4s ease;
+    }
+  }
+
+  .type {
+    position: absolute;
+    top: 1em;
+    right: 1em;
+    font-size: 0.75em;
+  }
+
+  .title-date {
+    margin-top: 0.75em;
+
+    h3 {
+      padding: 0;
+      margin: 0;
+    }
+  
+    span {
+      font-size: 0.9em;
+    }
+  }
+
+  .cover-info {
+    display: flex;
+    flex-direction: column;
+
+    img {
+      margin: 1em auto; 
+      width: 100%;
+      max-width: 300px;
+    }
+  }
+
+  .track-list {
+    display: flex;
+    flex-direction: column;
+
+    .toggle {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      h4 {
+        padding: 0;
+        margin: 0;
+      }
+    }
+
+    ul {
+      display: none;
+      padding: 0;
+      width: 100%;
+      margin: 0;
+      list-style-type: none;
+    
+      li {
+        display: flex;
+        padding: 5px;
+
+        .number {
+          margin-right: 5px;
+        }
+        
+        .length {
+          margin-left: auto;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 700px) {
+  .release {
+
+    .cover-info {
+      flex-direction: row;
+
+      img {
+        margin-top: 1em;
+        margin-right: 1em;
+        margin-bottom: 1em;
+        margin-left: 0;
+      }
+    }
   }
 }

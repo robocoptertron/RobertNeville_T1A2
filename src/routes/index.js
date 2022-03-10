@@ -15,6 +15,8 @@ router.get('/blog', (req, res) => {
   res.render('blog', { title: 'Blog | Portfolio' });
 });
 
+router.use('/blog-posts', require('./blog-posts'));
+
 router.get('/contact', (req, res) => {
   res.render('contact', { title: 'Contact | Portfolio' });
 });
@@ -25,6 +27,8 @@ router.post(
   contactHandler
 );
 
-router.use('/blog-posts', require('./blog-posts'));
+router.get('/discography', (req, res) => {
+  res.render('discography', { title: 'Discography | Portfolio' });
+});
 
 module.exports = router;
