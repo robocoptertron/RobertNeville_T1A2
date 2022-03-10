@@ -548,8 +548,18 @@ code {
     color: $release-text-hover;
     transition: all 0.4s ease;
 
-    .toggle span {
+    .toggle {
+      border-bottom: 1px solid $release-text-hover;
+      transition: all 0.4s ease;
+    }
+
+    .toggle div {
       transform: rotate(-90deg);
+      transition: all 0.4s ease;
+    }
+
+    .toggle path {
+      fill: $release-text-hover !important;
       transition: all 0.4s ease;
     }
 
@@ -602,6 +612,10 @@ code {
       h4 {
         padding: 0;
         margin: 0;
+      }
+
+      path {
+        fill: $release-text;
       }
     }
 
