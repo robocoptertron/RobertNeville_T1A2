@@ -49,9 +49,28 @@ footer on small devices:
 - blog
 - contact
 
-The blog page contains links to each of the included blog posts.
+The about page contains a link to a 'discography' page to showcase the cover 
+artwork for my music, and the blog page contains links to each of the 
+included blog posts. 
+
+Instead of making my contact details publicly available, I have included a 
+fully functional contact form with validation and noscript support. This form
+is submitted to the Express backend and an email is generated and sent to
+an email address of my own.
+
+Each listing on the discography page has an expandable track list that is 
+shown on mouse hover (on desktop and laptop computers) or on touch (on 
+mobile and tablet devices).
+
+The blog posts include code snippets from the projects discussed that have
+been highlighted using [highlight.js](http://highlightjs.org) via CDN 
+imports.
 
 ## Sitemap
+
+The following is a simple computer generated (using [GlooMaps](https://www.gloomaps.com/)) sitemap of the project:
+
+![rncode sitemap](/docs/sitemap.png)
 
 ## Screenshots
 
@@ -61,6 +80,8 @@ the website's appearance:
 ### Header On Small Devices
 
 ![Top of home page on smaller devices](/docs/home-page-header-sm.png)
+
+### Header On Small Devices With Menu Expanded
 
 ![Top of home page with menu expanded](/docs/home-page-menu.png)
 
@@ -79,6 +100,26 @@ the website's appearance:
 ### Blog Page On Large Devices
 
 ![Blog page on large device types](/docs/blog-page-lg.png)
+
+### Contact Page On All Device Types
+
+![Contact page on all device types](/docs/contact-page.png)
+
+### Discography Item On Large Devices
+
+![Discography item on large device types](/docs/discography-item-lg.png)
+
+### Discography Item On Large Devices On Hover
+
+![Discography item on large device types on hover](/docs/discography-item-lg-hover.png)
+
+### Discography Item On Small Devices
+
+![Discography item on small device types](/docs/discography-item-sm.png)
+
+### Discography Item On Small Devices On Hover
+
+![Discography item on small device types on hover](/docs/discography-item-sm-hover.png)
 
 ## Target Audience
 
