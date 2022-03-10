@@ -81,14 +81,14 @@
     switch (type) {
       case 'success':
         messageCard.classList.add('success');
-        imgSrc = '/assets/close-16A085.svg';  
+        imgSrc = '/assets/images/icons/close-16A085.svg';  
         break;
       case 'warning':
         messageCard.classList.add('warning');
         break;
       case 'error':
         messageCard.classList.add('error');
-        imgSrc = '/assets/close-C0392B.svg';
+        imgSrc = '/assets/images/icons/close-C0392B.svg';
         break;
     }
 
@@ -127,7 +127,7 @@
     sendingDiv.appendChild(spinner);
 
     const spinnerImg = document.createElement('img');
-    spinnerImg.src = '/assets/favicon.svg';
+    spinnerImg.src = '/assets/images/favicon.svg';
     spinnerImg.alt = 'logo';
     spinner.appendChild(spinnerImg);
 
