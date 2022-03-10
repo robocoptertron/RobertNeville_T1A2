@@ -51,10 +51,10 @@ header {
       border: 2px solid $header-bg;
       text-decoration: none;
       color: $header-text;
+      transition: border-bottom 0.4s ease;
 
       &:hover {
         border-bottom: 2px solid $header-text;
-        transition: all 0.4s ease;
       }
     }
   }
@@ -113,10 +113,10 @@ header {
       text-align: center;
       text-decoration: none;
       color: inherit;
+      transition: background-color 0.4s ease;
 
       &:hover {
         background-color: #FFF;
-        transition: all 0.4s ease;
       }
     }
   }
@@ -176,10 +176,11 @@ main {
       background-color: $section-link-bg;
       text-decoration: none;
       color: $section-bg;
+      transition: background-color 0.4s ease;
 
       &:hover {
         background-color: $section-link-bg-hover;
-        transition: all 0.4s ease;
+        
       }
     }
 
@@ -215,10 +216,10 @@ footer {
       text-align: center;
       text-decoration: none;
       color: inherit;
+      transition: background-color 0.4s ease;
     
       &:hover {
         background-color: $section-link-bg-hover;
-        transition: all 0.4s ease;
       }
     }
   }
@@ -368,10 +369,10 @@ footer {
       background-color: $section-link-bg;
       color: $section-bg;
       cursor: pointer;
+      transition: background-color 0.4s ease;
     
       &:hover {
         background-color: $section-link-bg-hover;
-        transition: all 0.4s ease;
       }
     }
   }
@@ -419,10 +420,10 @@ footer {
     border-radius: 3px;
     margin: auto;
     background-color: inherit;
+    transition: background-color 0.4s ease;
   
     &:hover {
       background-color: $blog-post-link-bg;
-      transition: all 0.4s ease;
       animation: jiggle 0.5s ease 1;
     }
   }
@@ -449,11 +450,11 @@ footer {
     background-color: $blog-post-link-bg;
     text-decoration: none;
     color: $blog-post-text;
+    transition: all 0.4s ease;
 
     &:hover {
       background-color: $blog-post-link-bg-hover;
       color: $blog-post-text-hover;
-      transition: all 0.4s ease;
       animation: jiggle 0.5s ease 1;
     }
 
@@ -542,30 +543,26 @@ code {
   margin-bottom: 1em;
   background-color: $release-bg;
   color: $release-text;
+  transition: all 0.4s ease;
 
   &:hover {
     background-color: $release-bg-hover;
     color: $release-text-hover;
-    transition: all 0.4s ease;
 
     .toggle {
       border-bottom: 1px solid $release-text-hover;
-      transition: all 0.4s ease;
     }
 
     .toggle div {
       transform: rotate(-90deg);
-      transition: all 0.4s ease;
     }
 
     .toggle path {
       fill: $release-text-hover !important;
-      transition: all 0.4s ease;
     }
 
     .track-list ul {
       display: block;
-      transition: all 0.4s ease;
     }
   }
 
@@ -608,14 +605,20 @@ code {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
+      transition: border-bottom 0.4s ease;
 
       h4 {
         padding: 0;
         margin: 0;
       }
 
+      div {
+        transition: all 0.4s ease;
+      }
+
       path {
         fill: $release-text;
+        transition: fill 0.4s ease;
       }
     }
 
@@ -625,6 +628,7 @@ code {
       width: 100%;
       margin: 0;
       list-style-type: none;
+      transition: display 2s ease;
     
       li {
         display: flex;
