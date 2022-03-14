@@ -32,6 +32,14 @@ For development (server and client):
 npm run dev
 ```
 
+**NOTE:** if you need to test the `/contact` POST endpoint, you will need to 
+create your own `.env` file.
+
+Tested environments:
+
+- **Ubuntu 20.04.4 LTS** with **Chrome 98.0.4758.102 (64-bit)**
+- **Android 11** with **Chrome 98.0.4758.101**  
+
 ## Purpose
 
 The purpose of this website is to demonstrate my abilities as a developer
@@ -51,7 +59,8 @@ footer on small devices:
 
 The about page contains a link to a 'discography' page to showcase the cover 
 artwork for my music, and the blog page contains links to each of the 
-included blog posts. 
+included blog posts. Each blog post contains a link at its end that can be 
+used to direct the user back to the blog post index (blog page).
 
 Instead of making my contact details publicly available, I have included a 
 fully functional contact form with validation and noscript support. This form
