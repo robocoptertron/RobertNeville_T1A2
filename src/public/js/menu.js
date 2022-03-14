@@ -1,5 +1,5 @@
 (function() {
-  const MIN_INTERVAL_DURATION = 10; // (Milliseconds)
+  const MIN_INTERVAL_DURATION = 10; // Milliseconds
 
   const menu = document.querySelector('#menu');
   const hamburger = document.querySelector('header .hamburger');
@@ -9,6 +9,8 @@
   hamburger.addEventListener('click', handleHamburgerClick);
 
   window.onresize =  function() {
+    // Ensure that the menu is hidden when the 
+    // page is resized above responsive breakpoint:
     if (window.innerWidth >= 500 && menuVisible) {
       menu.style.display = 'none';
       menuVisible = false;
@@ -19,18 +21,20 @@
 
   function handleHamburgerClick() {
     if (!menuVisible) {
-      slideDown(menu, 'flex', 10);
+      slideDown(menu, 'flex', 10); // Show menu
       menuVisible = true;
       verticaliseHamburger();
       partHamburgerLinesHorizontally();
     } else {
-      slideUp(menu, 10);
+      slideUp(menu, 10); // Hide menu
       menuVisible = false;
       horizontaliseHamburger();
       partHambugerLinesVertically();
     }
   }
 
+  // Transitions hamburger lines to a
+  // vertical state ready for animation:
   function verticaliseHamburger() {
     hamburgerLines.forEach(line => {
       line.style.display = 'none';
@@ -45,6 +49,8 @@
     });
   }
 
+  // Animates the separation of hamgurger lines
+  // when vertical:
   function partHamburgerLinesHorizontally() {
     const targetWidth = 6;
     let currentWidth = 10;
@@ -60,6 +66,8 @@
     }, 5);
   }
 
+  // Transitions hamburger lines to a
+  // horizontal state ready for animation:
   function horizontaliseHamburger() {
     hamburgerLines.forEach(line => {
       line.style.display = 'none';
@@ -74,6 +82,8 @@
     });
   }
 
+  // Animates the separation of hamburger lines
+  // when horizontal:
   function partHambugerLinesVertically() {
     const targetHeight = 6;
     let currentHeight = 10;
@@ -89,6 +99,8 @@
     }, 5);
   }
 
+  // Slides element down into visibility (similar
+  // to jQuery):
   function slideDown(element, displayType, durationFactor) {
     if (element.style.display === displayType) {
       // The element is already displayed.
@@ -107,7 +119,6 @@
     // Perform transition:
     const HEIGHT_INCREMENT = targetHeight / durationFactor;
     let currentHeight = 0;
-    
     const intervalID = setInterval(() => {
       durationFactor -= 1;
       currentHeight += HEIGHT_INCREMENT;
@@ -119,6 +130,8 @@
     }, MIN_INTERVAL_DURATION);
   }
 
+  // Slides element up out of visibility (
+  // similar to jQuery):
   function slideUp(element, durationFactor) {
     if (element.style.display === 'none') {
       // The element is already not displayed.
@@ -129,7 +142,6 @@
     // Perform transition:
     let currentHeight = element.getBoundingClientRect().height;
     const HEIGHT_INCREMENT = currentHeight / durationFactor;
-    
     const intervalID = setInterval(() => {
       durationFactor -= 1;
       currentHeight -= HEIGHT_INCREMENT;

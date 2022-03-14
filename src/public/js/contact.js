@@ -14,7 +14,7 @@
 
     fields.forEach(field => {
       if (field.value.length === 0) {
-        // It's empty, so display error styles
+        // Required field is empty
         applyErrorStyles(field, 'Required');
         emptyField = true;
       }
@@ -26,6 +26,7 @@
     }
 
     if (!emailInput.value.match(emailRegex)) {
+      // Email does not match regex
       applyErrorStyles(emailInput, 'Invalid email address');
       showMessage('Please enter a valid email address', 'error');
       return;
@@ -52,7 +53,7 @@
   fields.forEach(field => {
     field.addEventListener('blur', (event) => {
       if (field.value.length === 0) {
-        // It's empty, so display error
+        // Required field is empty
         applyErrorStyles(field, 'Required');
       } else {
         removeErrorStyles(field);
@@ -73,11 +74,12 @@
   function showMessage(message, type) {
     clearMessage();
 
+    // Create message card component:
     const messageCard = document.createElement('div');
     messageCard.classList.add('message-card');
 
+    // Select the image with the correct colour:
     let imgSrc;
-
     switch (type) {
       case 'success':
         messageCard.classList.add('success');
@@ -94,6 +96,7 @@
 
     messageCard.innerHTML = message;
 
+    // Create and add close button:
     const closeButton = document.createElement('button');
     closeButton.addEventListener('click', () => {
       messageCard.remove();
@@ -105,6 +108,7 @@
 
     messageCard.appendChild(closeButton);
     
+    // Add message card to form:
     const buttonsFieldset = form.querySelector('.buttons');
     form.insertBefore(messageCard, buttonsFieldset);
   }
