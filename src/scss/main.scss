@@ -10,10 +10,14 @@ body {
   margin: 0;
 }
 
+// Global font:
+
 @font-face {
   font-family: 'Roboto Mono', monospace;
   src: url("assets/RobotoMono-Regular.ttf");
 }
+
+// Animations:
 
 @keyframes spin {
   0% { transform: rotateY(0deg); }
@@ -26,10 +30,14 @@ body {
   50% { transform: rotate(-1deg); }
 }
 
+// Global styles:
+
 * {
   box-sizing: border-box;
   font-family: 'Roboto Mono', monospace;
 }
+
+// Header component:
 
 header {
   display: flex;
@@ -94,6 +102,8 @@ header {
   }  
 }
 
+// Menu component:
+
 #menu {
   display: none;
   justify-content: center;
@@ -128,6 +138,8 @@ header {
   }
 }
 
+// Red fixed background with texture:
+
 #fixed-background {
   position: fixed;
   z-index: -1;
@@ -137,6 +149,8 @@ header {
   // Downloaded from: https://www.transparenttextures.com/
   background-image: url('../assets/images/my-little-plaid-dark.png');
 }
+
+// Main page content:
 
 main {
   flex-grow: 1;
@@ -192,6 +206,8 @@ main {
   }
 }
 
+// Footer component:
+
 footer {
   display: flex;
   flex-direction: column;
@@ -224,6 +240,8 @@ footer {
     }
   }
 }
+
+// Contact form component:
 
 #contact {
 
@@ -378,6 +396,8 @@ footer {
   }
 }
 
+// Contact form 'sending' spinner:
+
 .sending {
   display: flex;
   flex-direction: column;
@@ -404,6 +424,8 @@ footer {
     color: $section-text;
   }
 }
+
+// Connect section on contact page:
 
 .connect {
   display: flex;
@@ -434,6 +456,8 @@ footer {
     flex-direction: row;
   }
 }
+
+// Blog page content:
 
 .blog-posts {
   display: flex;
@@ -513,6 +537,8 @@ footer {
   }
 }
 
+// Blog post date and time:
+
 .date-time {
   display: flex;
   justify-content: center;
@@ -522,6 +548,8 @@ footer {
     padding: 1em;
   }
 }
+
+// Blog post code snippets:
 
 figure {
   width: 100%;
@@ -533,6 +561,8 @@ code {
   width: 100%;
   margin: 0;
 }
+
+// Release component (discography page):
 
 .release {
   display: flex;
