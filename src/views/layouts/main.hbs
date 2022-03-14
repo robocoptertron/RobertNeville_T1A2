@@ -30,10 +30,15 @@
   </noscript>
 </head>
 <body>
+  {{!-- Header component (see ../partials/header.hbs): --}}
   {{> header }}
+  {{!-- Menu component (see ../partials/menu.hbs): --}}
   {{> menu }}
+  {{!-- Fixed red background with texture: --}}
   <div id="fixed-background"></div>
+  {{!-- 'main' and it's contents is inserted here: --}}
   {{{ body }}}
+  {{!-- Footer component (see ../partials/footer.hbs): --}}
   {{> footer }}
   <script src="/js/menu.js"></script>
 </body>
