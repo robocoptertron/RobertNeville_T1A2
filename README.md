@@ -101,6 +101,20 @@ the website's appearance:
 
 ![Blog page on large device types](/docs/blog-page-lg.png)
 
+### Example Blog Post Page On All Device Types
+
+#### Top
+
+![Blog post page top](/docs/blog-post-top.png)
+
+#### Middle
+
+![Blog post page middle](/docs/blog-post-mid.png)
+
+#### Bottom
+
+![Blog post page bottom](/docs/blog-post-bottom.png)
+
 ### Contact Page On All Device Types
 
 ![Contact page on all device types](/docs/contact-page.png)
