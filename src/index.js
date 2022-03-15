@@ -4,17 +4,11 @@ if (process.env.NODE_ENV === 'development') {
 
 const path = require('path');
 const express = require('express');
-const { engine } = require('express-handlebars');
 const routes = require('./routes');
 
 // Init app:
 const app = express();
 const port = process.env.PORT || 3000;
-
-// Init view engine:
-app.engine('.hbs', engine({ extname: '.hbs'}));
-app.set('view engine', '.hbs');
-app.set('views', path.resolve(__dirname, 'views'));
 
 // Body parser:
 app.use(express.json());
@@ -37,7 +31,7 @@ app.use(express.static(path.resolve(__dirname, 'public')));
 
 // 404 route:
 app.get('*', (req, res) => {
-  res.render('404', { title: '404 | Portfolio' });
+  res.sendFile(path.resolve(__dirname, 'public', '404.html'));
 });
 
 // Start app:

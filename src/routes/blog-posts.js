@@ -1,39 +1,24 @@
+const path = require('path');
 const router = require('express').Router();
 
 router.get('/looking-qt', (req, res) => {
-  res.render('blog-posts/looking-qt', {
-    title: 'IDE: Looking Qt! | Portfolio'
-  });
+  res.sendFile(path.resolve(__dirname, 'public', 'blog-posts', 'looking-qt.html'));
 });
 
 router.get('/first-site-published', (req, res) => {
-  res.render('blog-posts/first-site-published', {
-    title: 'First Site Published! | Portfolio'
-  });
+  res.sendFile(path.resolve(__dirname, 'public', 'blog-posts', 'first-site-published.html'));
 });
 
 router.get('/syntax-highlighter', (req, res) => {
-  res.render('blog-posts/syntax-highlighter', { 
-    title: 'IDE: Syntax Highlighter | Portfolio' 
-  });
+  res.sendFile(path.resolve(__dirname, 'public', 'blog-posts', 'syntax-highlighter.html'));
 });
 
 router.get('/typescript-rebuild', (req, res) => {
-  res.render('blog-posts/typescript-rebuild', {
-    title: 'IDE: TypeScript Rebuild | Portfolio'
-  });
+  res.sendFile(path.resolve(__dirname, 'public', 'blog-posts', 'typescript-rebuild.html'));
 });
 
 router.get('/first-repos-published', (req, res) => {
-  res.render('blog-posts/first-repos-published', {
-    title: 'First Repos Published! | Portfolio'
-  });
-});
-
-router.get('/first-repos-published', (req, res) => {
-  res.render('blog-posts/first-repos-published', {
-    title: 'First Repos Published! | Portfolio'
-  });
+  res.sendFile(path.resolve(__dirname, 'public', 'blog-posts', 'first-repos-published.html'));
 });
 
 module.exports = router;
