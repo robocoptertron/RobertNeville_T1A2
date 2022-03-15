@@ -257,7 +257,7 @@ The backend is an Express.js application that uses `express-handlebars` for
 templating, `joi` for server-side form validation, and `nodemailer` for 
 sending emails.
 
-**`express-handlebars` is a crucial dependency, as it enables the displaying
+**`express-handlebars` is a crucial dependency as it enables the displaying
 of contact form error messages in noscript scenarios, and significantly
 improves the maintainability of this project's HTML code.**
 
