@@ -68,6 +68,7 @@ The project has the following directory structure (excluding node_modules):
 
 ```
 ├── docs
+├── ppt
 └── src
     ├── config
     ├── middleware
@@ -88,6 +89,7 @@ The project has the following directory structure (excluding node_modules):
         ├── blog-posts
         ├── layouts
         └── partials
+
 ```
 
 To assist in marking the submission, I would like to direct the reader's 
@@ -96,7 +98,8 @@ used in the site with the primary layout (`main.bhs`) in the `layouts`
 subdirectory, and all partials in the `partials` directory. The main 
 content for each view is in a separate file directly under `views` - the 
 names of these files reflect the name of the corresponding application 
-route.
+route. The `scss` directory contains all SCSS source code. This code is 
+compiled to a single CSS file (`public/css/main.css`).
 
 ## Purpose
 
