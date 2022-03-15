@@ -106,6 +106,7 @@ header {
 
 #menu {
   display: none;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 1em;
@@ -129,6 +130,13 @@ header {
         background-color: #FFF;
       }
     }
+  }
+
+  .socials {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    margin-top: 1em;
   }
 }
 
@@ -216,7 +224,7 @@ footer {
   background-color: $footer-bg;
   color: $footer-text;
 
-  img {
+  > img {
     height: 50px;
     margin-bottom: 1em;
   }
@@ -238,6 +246,12 @@ footer {
         background-color: $section-link-bg-hover;
       }
     }
+  }
+
+  .socials {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
   }
 }
 
