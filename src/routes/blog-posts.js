@@ -30,10 +30,4 @@ router.get('/first-repos-published', (req, res) => {
   });
 });
 
-router.get('/first-repos-published', (req, res) => {
-  res.render('blog-posts/first-repos-published', {
-    title: 'First Repos Published! | Portfolio'
-  });
-});
-
 module.exports = router;
