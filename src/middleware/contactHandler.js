@@ -14,6 +14,7 @@ module.exports = (req, res) => {
   `\n\nAll the best,` +
   `\n\nYour portfolio's mailbot. Bleep blop bloop!`;
 
+  // Create email transporter:
   const transporter = nodemailer.createTransport({
     host: config.host,
     port: config.port,
@@ -21,6 +22,7 @@ module.exports = (req, res) => {
     auth: config.auth,
   });
 
+  // Configure mail options:
   const mailOptions = {
     from: config.from,
     to: config.to,
@@ -28,6 +30,7 @@ module.exports = (req, res) => {
     text: emailText
   };
 
+  // Send email with transporter:
   transporter.sendMail(mailOptions, error => {
     if (error) {
       const message = 'There was a problem sending your message';
