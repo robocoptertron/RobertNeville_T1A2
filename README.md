@@ -4,14 +4,28 @@ This is the repository for a portfolio site that I have created as the first
 assessment piece in my [Coder Academy](https://www.coderacademy.edu.au/)
 studies.
 
-The code for this repository can be found on GitHub at [RobertNeville_T1A2](https://github.com/robocoptertron/RobertNeville_T1A2), and the site has 
-been deployed at [rncode.herokuapp.com](https://rncode.herokuapp.com).
+A mobile-first approach has been taken for this website. A combination
+of Flexbox and media queries has been used to achieve responsivity.
 
-A mobile-first approach has been taken for this website.
+The source code for this repository can be found on GitHub at 
+[RobertNeville_T1A2](https://github.com/robocoptertron/RobertNeville_T1A2), 
+and **all code that is contained therein has been written by me - the author -
+through the application of my current understanding of Web develoment
+using the technologies outlined in the 'Tech Stack' section of this 
+document**. That understanding has been developed through independent
+and (ongoing) institutional studies over the past 3 years. Special thanks to 
+the wealth of educational material and documentation that can be found
+on the Web.
+
+The site is currently deployed at 
+[rncode.herokuapp.com](https://rncode.herokuapp.com). 
 
 ## Scripts
 
-To install the project, run the following command:
+**The following scripts must be executed in the root directory of
+the repository.**
+
+To install the project:
 
 ```
 npm install
@@ -69,8 +83,9 @@ The project has the following directory structure (excluding node_modules):
 ```
 
 To assist in marking the submission, I would like to direct the reader's 
-attention to the `views` and `scss` directories; `views` contains all HTML
-used in the site we the primary layout (`main.bhs`) in the `layouts` subdirectory, and all partials are in the `partials` directory. The main 
+attention to the `views` and `scss` directories. `views` contains all HTML
+used in the site with the primary layout (`main.bhs`) in the `layouts` 
+subdirectory, and all partials in the `partials` directory. The main 
 content for each view is in a separate file directly under `views` - the 
 names of these files reflect the name of the corresponding application 
 route.
@@ -78,7 +93,7 @@ route.
 ## Purpose
 
 The purpose of this website is to demonstrate my abilities as a developer
-to prospective employers. It has a minimal design, but the content and 
+to prospective employers. It has a minimal, 'retro' design, but the content and 
 various additional features communicate my skills and experience effectively.
 
 Although the criteria for this assessment piece only requires the use
@@ -99,26 +114,42 @@ footer on small devices:
 - contact
 
 The about page contains a link to a 'discography' page to showcase the cover 
-artwork for my music, and the blog page contains links to each of the 
-included blog posts. Each blog post contains a link at its end that can be 
+artwork for my music, and the blog page contains links to the **5**
+included blog posts. These links have been designed responsively using 
+both Flexbox and media queries, and perform a 'jiggle' animation on mouse 
+hover and/or touch. Each blog post contains a link at its end that can be 
 used to direct the user back to the blog post index (blog page).
 
-Instead of making my contact details publicly available, I have included a 
-fully functional contact form with validation and noscript support. This form
-is submitted to the Express backend and an email is generated and sent to
-an email address of my own.
-
-Each listing on the discography page has an expandable track list that is 
-shown on mouse hover (on desktop and laptop computers) or on touch (on 
-mobile and tablet devices).
-
-The blog posts include code snippets from the projects discussed that have
+The blog posts include code snippets from the projects discussed, which have
 been highlighted using [highlight.js](http://highlightjs.org) via CDN 
 imports.
 
+Instead of making my contact details publicly available, I have included a 
+fully functional contact form with client and server side validation, and
+noscript support. Valid form data is incorporated in an email that is generated
+and sent by the server to an email address with a domain name that I own.
+
+A novel feature that can be discovered through interacting with the contact form
+is a 'sending spinner'. This component simply displays the site logo in 
+abbreviated form (see `src/public/assets/images/favicon.svg`) on a 
+circular, coin-like background that is animated to rotate around the Y axis
+until the form submission is complete or an error occurs.
+
+Each listing on the discography page has an expandable track list that is 
+shown on mouse hover (on desktop and laptop computers) or on touch (on 
+mobile and tablet devices). These discography items are responsive - much
+like the aforementioned blog post links.
+
+On devices smaller than `500px`, a hamburger component can be used to
+toggle the menu component, which displays site and socials 
+navigation links. This hamburger is animated using JavaScript 
+with an approach that I developed from scratch and have used in 
+other personal projects.
+
 ## Sitemap
 
-The following is a simple computer generated (using [GlooMaps](https://www.gloomaps.com/)) sitemap of the project:
+The following is a simple computer generated (using [GlooMaps](https://www.gloomaps.com/)) 
+sitemap of the project:
 
 ![rncode sitemap](/docs/sitemap.png)
 
@@ -188,8 +219,8 @@ the website's appearance:
 ## Target Audience
 
 The target audience of this website is prospective employers and other 
-developers. It has been designed to communicated my skills as a developer so 
-that I may secure employment in the industry.
+developers. It has been designed to communicated my skills as a developer to
+assist in securing employment in the industry. 
 
 ## Tech Stack
 
@@ -197,17 +228,17 @@ This project utilises the following primary technologies:
 
 - HTML
 - SCSS/CSS
-- JavaScript (vanilla)
+- JavaScript
 - Node.js
 
-These are the its dependencies:
+These are its dependencies^:
 
 - express
 - express-handlebars
 - joi
 - nodemailer
 
-These are its devDependencies:
+These are its devDependencies^:
 
 - concurrently
 - cross-env
@@ -215,13 +246,20 @@ These are its devDependencies:
 - nodemon
 - sass
 
+^ For a more detailed list of the versions used, please refer to 
+`package.json`. 
+
 The client-side code is primarily HTML and CSS - with some vanilla
-JavaScript used for menu on smaller devices and for contact form validation 
+JavaScript used for the menu on smaller devices and for contact form validation 
 and submission. The CSS is compiled from SCSS using the `sass` compiler.
 
 The backend is an Express.js application that uses `express-handlebars` for 
 templating, `joi` for server-side form validation, and `nodemailer` for 
 sending emails.
+
+**`express-handlebars` is a crucial dependency, as it enables the displaying
+of contact form error messages in noscript scenarios, and significantly
+improves the maintainability of this project's HTML code.**
 
 The other devDependencies are required to facilitate the development 
 process; `concurrently` is used for running multiple npm scripts in 
