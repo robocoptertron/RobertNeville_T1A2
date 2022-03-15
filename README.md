@@ -125,8 +125,8 @@ been highlighted using [highlight.js](http://highlightjs.org) via CDN
 imports.
 
 Instead of making my contact details publicly available, I have included a 
-fully functional contact form with client and server side validation, and
-noscript support. Valid form data is incorporated in an email that is generated
+fully functional contact form with client and server side validation. 
+Valid form data is incorporated in an email that is generated
 and sent by the server to an email address with a domain name that I own.
 
 A novel feature that can be discovered through interacting with the contact form
@@ -234,7 +234,6 @@ This project utilises the following primary technologies:
 These are its dependencies:
 
 - express
-- express-handlebars
 - joi
 - nodemailer
 
@@ -253,13 +252,8 @@ The client-side code is primarily HTML and CSS - with some vanilla
 JavaScript used for the menu on smaller devices and for contact form validation 
 and submission. The CSS is compiled from SCSS using the `sass` compiler.
 
-The backend is an Express.js application that uses `express-handlebars` for 
-templating, `joi` for server-side form validation, and `nodemailer` for 
-sending emails.
-
-**`express-handlebars` is a crucial dependency as it enables the displaying
-of contact form error messages in noscript scenarios, and significantly
-improves the maintainability of this project's HTML code.**
+The backend is an Express.js application `joi` for server-side form validation
+and `nodemailer` for sending emails.
 
 The other devDependencies are required to facilitate the development 
 process; `concurrently` is used for running multiple npm scripts in 
