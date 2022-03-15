@@ -6,24 +6,24 @@ const contactHandler = require('../middleware/contactHandler');
 
 // Home page route:
 router.get('/', (req, res) => {
-  res.sendFile(path.resolve(__dirname, 'public', 'index.html'));
+  res.sendFile(path.resolve(__dirname, '..', 'public', 'index.html'));
 });
 
 // About page route:
 router.get('/about', (req, res) => {
-  res.send(path.resolve(__dirname, 'public', 'about.html'));
+  res.sendFile(path.resolve(__dirname, '..', 'public', 'about.html'));
 });
 
 // Blog page route:
 router.get('/blog', (req, res) => {
-  res.send(path.resolve(__dirname, 'public', 'blog.html'));
+  res.sendFile(path.resolve(__dirname, '..', 'public', 'blog.html'));
 });
 
 // Blog post routes:
 router.use('/blog-posts', require('./blog-posts'));
 
 router.get('/contact', (req, res) => {
-  res.sendFile(path.resolve(__dirname, 'public', 'contact.html'));
+  res.sendFile(path.resolve(__dirname, '..', 'public', 'contact.html'));
 });
 
 // Contact form post request handler:
@@ -35,7 +35,7 @@ router.post(
 
 // Discography page route:
 router.get('/discography', (req, res) => {
-  res.sendFile(path.resolve(__dirname, 'public', 'discography.html'));
+  res.sendFile(path.resolve(__dirname, '..', 'public', 'discography.html'));
 });
 
 module.exports = router;
