@@ -1,5 +1,7 @@
 module.exports = schema => {
   return (req, res, next) => {
+    // Validate req.body against the given
+    // Joi schema (using a closure here):
     const { error } = schema.validate(req.body);
     if (error) {
       if (!req.xhr) {
