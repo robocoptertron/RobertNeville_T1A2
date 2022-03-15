@@ -231,14 +231,14 @@ This project utilises the following primary technologies:
 - JavaScript
 - Node.js
 
-These are its dependencies^:
+These are its dependencies:
 
 - express
 - express-handlebars
 - joi
 - nodemailer
 
-These are its devDependencies^:
+These are its devDependencies:
 
 - concurrently
 - cross-env
@@ -246,8 +246,8 @@ These are its devDependencies^:
 - nodemon
 - sass
 
-^ For a more detailed list of the versions used, please refer to 
-`package.json`. 
+For a more detailed list of the versions of the packages used, please refer to 
+`package.json`.
 
 The client-side code is primarily HTML and CSS - with some vanilla
 JavaScript used for the menu on smaller devices and for contact form validation 
