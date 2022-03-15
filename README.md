@@ -60,6 +60,7 @@ The project has the following directory structure (excluding node_modules):
 
 ```
 ├── docs
+├── ppt
 └── src
     ├── config
     ├── middleware
@@ -71,24 +72,20 @@ The project has the following directory structure (excluding node_modules):
     │   │       ├── cover-art
     │   │       ├── icons
     │   │       └── logos
+    │   ├── blog-posts
     │   ├── css
     │   └── js
     ├── routes
     ├── schemas
-    ├── scss
-    └── views
-        ├── blog-posts
-        ├── layouts
-        └── partials
+    └── scss
 ```
 
 To assist in marking the submission, I would like to direct the reader's 
-attention to the `views` and `scss` directories. `views` contains all HTML
-used in the site with the primary layout (`main.bhs`) in the `layouts` 
-subdirectory, and all partials in the `partials` directory. The main 
-content for each view is in a separate file directly under `views` - the 
-names of these files reflect the name of the corresponding application 
-route.
+attention to the `public` and `scss` directories. `public` contains all HTML
+used in the site with `index.html`, `about.html`, `blog.html`, `contact.html`, 
+`discography.html`, and `404.html` as direct children. All individual blog
+post pages are situated in the `blog-posts` subdirectory. The SCSS source
+code is in the `scss` directory, and is compiled to `public/css/main.css`. 
 
 ## Purpose
 
