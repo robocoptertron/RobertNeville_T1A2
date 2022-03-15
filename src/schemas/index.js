@@ -1,6 +1,7 @@
 const Joi = require('joi');
 
 const contact = Joi.object({
+  // 'Name' field:
   name: Joi.string().required().error(errors => {
     errors.forEach(error => {
       switch (error.code) {
@@ -16,6 +17,7 @@ const contact = Joi.object({
     });
     return errors;
   }),
+  // Email field:
   email: Joi.string().email().required().error(errors => {
     errors.forEach(error => {
       switch (error.code) {
@@ -34,6 +36,7 @@ const contact = Joi.object({
     });
     return errors;
   }),
+  // Message field:
   message: Joi.string().required().error(errors => {
     errors.forEach(error => {
       switch (error.code) {
@@ -51,6 +54,4 @@ const contact = Joi.object({
   })
 });
 
-module.exports = {
-  contact
-};
+module.exports = { contact };
