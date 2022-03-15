@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>First Site Published! | Portfolio</title>
+  <link rel="icon" href="/assets/images/favicon.svg">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/default.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
+</head>
+<body>
+  <!-- Header component: -->
+  <header>
+    <img src="/assets/images/logos/logo-1B2631.svg" alt="logo" height="25px">
+    <nav>
+      <a href="/">HOME</a>
+      <a href="/about">ABOUT</a>
+      <a href="/blog">BLOG</a>
+      <a href="/contact">CONTACT</a>
+    </nav>
+    <div class="hamburger">
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+    </div>
+  </header>
+  <!-- Menu component: -->
+  <div id="menu">
+    <nav>
+      <a href="/">HOME</a>
+      <a href="/about">ABOUT</a>
+      <a href="/blog">BLOG</a>
+      <a href="/contact">CONTACT</a>
+    </nav>
+    <div class="socials">
+      <a href="https://github.com/R-Neville">
+        <img src="/assets/images/logos/github-1B2631.png" alt="GitHub logo">
+      </a>
+      <a href="https://www.linkedin.com/in/r-neville/">
+        <img src="/assets/images/logos/linkedin-1B2631.png" alt="LinkedIn logo">
+      </a>
+    </div>
+  </div>
+  <!-- Fixed background: -->
+  <div id="fixed-background"></div>
+  <!-- Main content: -->
+  <main>
+    <section>
+      <h2>First Site Published!</h2>
+      <img src="/assets/images/blog/first-site-published-blog-post-thumbnail.png" alt="Screenshot of Coloureyes">
+      <div class="date-time">
+        <span class="date">03/03/2022</span>
+        <span class="time">10:30</span>
+      </div>
+      <p>
+        Back in 2020, I wanted to learn a front-end framework
+        and I chose Vue.js. I'd used a couple of websites for downloading free icons with free 
+        choice of colours, and I thought it would be fun to make a few icons and create a similar
+        site. So, what I came up with was an application I called 'IconDrawer' (as in a chest of
+        drawers).
+      </p>
+      <p>
+        This app included a colour picker that could be used to modify the SVG logos I'd created,
+        and the logos were stored in a database that my server controlled using Sequelize. Once the
+        logo's colour is chosen, it can be downloaded in either PNG or SVG format.
+      </p>
+      <p>
+        I decided to defer semester 2 in 2021, because I wasn't really enjoying the course
+        I felt like the content was not building on itself into an applicable knowledge
+        base, and I was learning more useful skills working on my own projects.
+        I ended up taking a few weeks break from programming, but I was suddenly inspired again
+        when I was at a bit of a loose end. 
+      </p>
+      <p>
+        I ended up revisiting the code I'd written for IconDrawer, but - alas - the old laptop
+        that I'd been using for the project crashed and I lost all the icons! I was going to 
+        remake them (and I probably still will at some point), but I thought I'd try something
+        a little different using a colour picker. Also, for the next project I would use local storage
+        so that I wouldn't have to worry about maintaining a database.
+      </p>
+      <p>
+        <a href="https://coloureyes.herokuapp.com">Coloureyes</a> is basically an SPA with which you
+        can discover and save colours, and group them into palettes. The colour picker can be switched
+        between HEX and RGB mode, and you can easily copy codes for use in design and Web development.
+      </p>
+      <h3>Snippets</h3>
+      <figure>
+        <figcaption>app.js</figcaption>
+        <pre>
+          <code class="language-javascript">
+import ConfigStore from './ConfigStore.js';
+import RGBStore from "./RGBStore.js";
+import PaletteStore from './PaletteStore.js';
+
+import { 
+  initColorPicker, 
+  updateColorPicker 
+} from "./color-picker.mjs";
+
+import { 
+  initCollections, 
+  refreshCollections 
+} from "./collections.mjs";
+
+import { 
+  initPaletteViewer, 
+  updatePaletteViewer, 
+  clearPaletteViewer,
+} from './palette-viewer.mjs';
+
+(function() {
+  const configStore = new ConfigStore();
+  const rgbStore = new RGBStore();
+  const paletteStore = new PaletteStore();
+
+  initColorPicker(configStore);
+  initCollections();
+  initPaletteViewer();
+
+  document.addEventListener('favourite-selected', handleFavouriteSelected);
+  document.addEventListener('palette-added', handlePaletteAdded);
+  document.addEventListener('palette-selected', handlePaletteSelected);
+  document.addEventListener('back-to-palettes', handleBackToPalettes);
+  document.addEventListener('palette-color-selected', handlePaletteColorSelected);
+  document.addEventListener('confirm-palette-deletion', handleConfirmPaletteDeletion);
+
+  function handleFavouriteSelected(event) {
+    const favouriteHex = event.detail;
+    rgbStore.updateFromFullHex(favouriteHex);
+    updateColorPicker(configStore, rgbStore);
+  }
+
+  function handlePaletteAdded(event) {
+    const paletteName = event.detail;
+    const paletteViewerDiv = document.querySelector('#palette-viewer');
+    if (paletteViewerDiv.style.display !== 'none') {
+      updatePaletteViewer(paletteName);
+    }
+  }
+
+  function handlePaletteSelected(event) {
+    const paletteName = event.detail;
+    updatePaletteViewer(paletteName);
+    hideCollections();
+    showPaletteViewer();
+  }
+
+  function handleBackToPalettes() {
+    hidePaletteViewer();
+    showCollections();
+  }
+
+  function handlePaletteColorSelected(event) {
+    const colorHex = event.detail;
+    rgbStore.updateFromFullHex(colorHex);
+    updateColorPicker(configStore, rgbStore);
+  }
+
+  function handleConfirmPaletteDeletion(event) {
+    const paletteName = event.detail;
+    const modal = document.querySelector('#confirm-palette-deletion-modal');
+    const paragraph = modal.querySelector('p');
+    const yesButton = modal.querySelector('.yes');
+    const noButton = modal.querySelector('.no');
+
+    paragraph.innerHTML = `Are you sure you want to delete '${paletteName}'?`;
+
+    yesButton.addEventListener('click', handleYesButtonClick);
+    noButton.addEventListener('click', handleNoButtonClick);
+
+    modal.style.display = 'flex';
+
+    function handleYesButtonClick() {
+      modal.style.display = 'none';
+      paletteStore.removePalette(paletteName);
+      hidePaletteViewer();
+      showCollections();
+      yesButton.removeEventListener('click', handleYesButtonClick);
+    }
+
+    function handleNoButtonClick() {
+      modal.style.display = 'none';
+      paragraph.innerHTML = '';
+    }
+  } 
+
+  function hideCollections() {
+    const collectionsDiv = document.querySelector('#collections');
+    collectionsDiv.style.display = 'none';
+  }
+
+  function showCollections() {
+    refreshCollections();
+    const collectionsDiv = document.querySelector('#collections');
+    collectionsDiv.style.display = 'flex';
+  }
+
+  function hidePaletteViewer() {
+    const paletteViewerDiv = document.querySelector('#palette-viewer');
+    paletteViewerDiv.style.display = 'none';
+    clearPaletteViewer();
+  }
+
+  function showPaletteViewer() {
+    const paletteViewerDiv = document.querySelector('#palette-viewer');
+    paletteViewerDiv.style.display = 'flex';
+  }
+})();
+          </code>
+        </pre>
+      </figure>
+      <a href="/blog">Back To Blog >></a>
+    </section>
+  </main>
+  <script>hljs.highlightAll();</script>
+  <!-- Footer component: -->
+  <footer>
+    <img src="/assets/images/logos/logo-EBEDEF.svg" alt="logo" height="40px">
+    <nav>
+      <a href="/">HOME</a>
+      <a href="/about">ABOUT</a>
+      <a href="/blog">BLOG</a>
+      <a href="/contact">CONTACT</a>
+    </nav>
+    <div class="socials">
+      <a href="https://github.com/R-Neville">
+        <img src="/assets/images/logos/github-EBEDEF.png" alt="GitHub logo">
+      </a>
+      <a href="https://www.linkedin.com/in/r-neville/">
+        <img src="/assets/images/logos/linkedin-EBEDEF.png" alt="LinkedIn logo">
+      </a>
+    </div>
+    <p>&copy; 2022, Robert Neville</p>
+  </footer>
+  <script src="/js/menu.js"></script>
+</body>
+</html>

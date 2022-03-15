@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>First Repos Published! | Portfolio</title>
+  <link rel="icon" href="/assets/images/favicon.svg">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/default.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
+</head>
+<body>
+  <!-- Header component: -->
+  <header>
+    <img src="/assets/images/logos/logo-1B2631.svg" alt="logo" height="25px">
+    <nav>
+      <a href="/">HOME</a>
+      <a href="/about">ABOUT</a>
+      <a href="/blog">BLOG</a>
+      <a href="/contact">CONTACT</a>
+    </nav>
+    <div class="hamburger">
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+    </div>
+  </header>
+  <!-- Menu component: -->
+  <div id="menu">
+    <nav>
+      <a href="/">HOME</a>
+      <a href="/about">ABOUT</a>
+      <a href="/blog">BLOG</a>
+      <a href="/contact">CONTACT</a>
+    </nav>
+    <div class="socials">
+      <a href="https://github.com/R-Neville">
+        <img src="/assets/images/logos/github-1B2631.png" alt="GitHub logo">
+      </a>
+      <a href="https://www.linkedin.com/in/r-neville/">
+        <img src="/assets/images/logos/linkedin-1B2631.png" alt="LinkedIn logo">
+      </a>
+    </div>
+  </div>
+  <!-- Fixed background: -->
+  <div id="fixed-background"></div>
+  <!-- Main content: -->
+  <main>
+    <section>
+      <h2>First Repos Published!</h2>
+      <img src="/assets/images/blog/first-repos-published-blog-post-thumbnail.png" alt="Screenshot of PiFiles">
+      <div class="date-time">
+        <span class="date">06/03/2022</span>
+        <span class="time">17:15</span>
+      </div>
+      <p>
+        I have some exciting news (exciting for me anyway...). I published two repos on GitHub, 
+        recently - just so I had at least some example code up there. The repos are:
+      </p>
+      <ul>
+        <li>
+          <a href="https://github.com/R-Neville/PiFilesGUIClient">PiFilesGUIClient</a>
+        </li>
+        <li>
+          <a href="https://github.com/R-Neville/PiFilesServer">PiFilesServer</a>
+        </li>
+      </ul>
+      <p>
+        Together they comprise a local file server system that I coded as a Raspberry Pi project.
+        Basically, the client scans the network for available hosts, and you select the machine
+        that is running the server on it and enter the port number that was configured. After
+        that, you can browse files on the server, upload them to it, and, of course, download
+        them to the computer that is running the client.
+      </p>
+      <p>
+        I built this project with Python, using PyQt (a Python Qt binding). It was a lot of fun,
+        and I learned a bit about networking along the way. Honestly, the GUI could be a bit 
+        prittier... But, hey! it was one of my first propper home Python projects, and it 
+        works like a treat!
+      </p>
+      <p>
+        I might even remake it with Electron one day... ;)
+      </p>
+      <h3>Snippets</h3>
+      <figure>
+        <figcaption>HostsThread.py</figcaption>
+        <pre>
+          <code class="language-python">
+import sys
+import errno
+import netifaces
+import os
+import socket
+
+from PyQt5 import QtCore
+from PyQt5 import QtGui
+from PyQt5 import QtWidgets
+
+class HostsThread(QtCore.QThread):
+
+    progressChanged = QtCore.pyqtSignal(int)
+    progressFinished = QtCore.pyqtSignal(list)
+
+    def run(self):
+        broadCastAddress = self.getBroadCastAddress().split(".")
+        broadCastAddress.pop(3)
+        broadCastAddress = ".".join(broadCastAddress)
+
+        self.getHosts(broadCastAddress)
+
+    def getBroadCastAddress(self):
+        for iface in netifaces.interfaces():
+            if iface == 'lo' or iface.startswith('vbox'):
+                continue
+            iface_details = netifaces.ifaddresses(iface)
+            if netifaces.AF_INET in iface_details:
+                return iface_details[netifaces.AF_INET][0]["broadcast"]
+
+    def getHosts(self, broadCastAddress):
+        hosts = []
+        i = 1
+        while i &lt; 255:
+            host_addr = broadCastAddress + "." + str(i)
+            try:
+                tmp = socket.gethostbyaddr(host_addr)
+                hosts.append((tmp[0].replace(".gateway", ""), tmp[2][0]))
+                self.progressChanged.emit(i)
+                i += 1
+            except socket.herror as error:
+                # Respond to unknown host error:
+                if error.errno == 1:
+                    self.progressChanged.emit(i)
+                    i += 1
+                    continue
+
+        self.progressFinished.emit(hosts)
+          </code>
+        </pre>
+      </figure>
+      <a href="/blog">Back To Blog >></a>
+    </section>
+  </main>
+  <script>hljs.highlightAll();</script>
+  <!-- Footer component: -->
+  <footer>
+    <img src="/assets/images/logos/logo-EBEDEF.svg" alt="logo" height="40px">
+    <nav>
+      <a href="/">HOME</a>
+      <a href="/about">ABOUT</a>
+      <a href="/blog">BLOG</a>
+      <a href="/contact">CONTACT</a>
+    </nav>
+    <div class="socials">
+      <a href="https://github.com/R-Neville">
+        <img src="/assets/images/logos/github-EBEDEF.png" alt="GitHub logo">
+      </a>
+      <a href="https://www.linkedin.com/in/r-neville/">
+        <img src="/assets/images/logos/linkedin-EBEDEF.png" alt="LinkedIn logo">
+      </a>
+    </div>
+    <p>&copy; 2022, Robert Neville</p>
+  </footer>
+  <script src="/js/menu.js"></script>
+</body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IDE: TypeScript Rebuild | Portfolio</title>
+  <link rel="icon" href="/assets/images/favicon.svg">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/default.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script>
+</head>
+<body>
+  <!-- Header component: -->
+  <header>
+    <img src="/assets/images/logos/logo-1B2631.svg" alt="logo" height="25px">
+    <nav>
+      <a href="/">HOME</a>
+      <a href="/about">ABOUT</a>
+      <a href="/blog">BLOG</a>
+      <a href="/contact">CONTACT</a>
+    </nav>
+    <div class="hamburger">
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+    </div>
+  </header>
+  <!-- Menu component: -->
+  <div id="menu">
+    <nav>
+      <a href="/">HOME</a>
+      <a href="/about">ABOUT</a>
+      <a href="/blog">BLOG</a>
+      <a href="/contact">CONTACT</a>
+    </nav>
+    <div class="socials">
+      <a href="https://github.com/R-Neville">
+        <img src="/assets/images/logos/github-1B2631.png" alt="GitHub logo">
+      </a>
+      <a href="https://www.linkedin.com/in/r-neville/">
+        <img src="/assets/images/logos/linkedin-1B2631.png" alt="LinkedIn logo">
+      </a>
+    </div>
+  </div>
+  <!-- Fixed background: -->
+  <div id="fixed-background"></div>
+  <!-- Main content: -->
+  <main>
+    <section>
+      <h2>IDE: TypeScript Rebuild</h2>
+      <img src="/assets/images/blog/typescript-rebuild-blog-post-thumbnail.png" alt="Screenshot of IDE made with TypeScript">
+      <div class="date-time">
+        <span class="date">05/03/2022</span>
+        <span class="time">15:30</span>
+      </div>
+      <p>
+        Around the time when I'd reached the difficult part of the syntax highlighter for
+        my IDE (as discussed in my <a href="/blog-posts/syntax-highlighter">previous blog post</a>),
+        I got curious about TypeScript. I noticed that many Electron apps use it instead of 
+        plain old JS. So, I watched a few YouTube videos and decided to rebuild the IDE with it.
+      </p>
+      <p>
+        I haven't got as far as reimplementing and improving syntax highlighting yet, but I'm on track!
+        At the moment, the main obstacle is finding the time - I've been working, studying, and making
+        lots of music...
+      </p>
+      <p>
+        I've also managed to structure the project a bit more 'professionally', and I'm much happier
+        with it!
+      </p>
+      <h3>Snippets</h3>
+      <figure>
+        <figcaption>App.ts</figcaption>
+        <pre>
+          <code class="language-javascript">
+import { applyStyles } from './helpers';
+import Main from './components/Main';
+import StatusBar from './components/StatusBar';
+
+const styles = {
+  display: 'flex',
+  flexDirection: 'column',
+  boxSizing: 'border-box',
+  padding: 0,
+  maxWidth: '100%',
+  height: '100vh',
+  maxHeight: '100vh',
+  margin: 0,
+  overflow: 'hidden'
+};
+
+export default class App {
+  private _main: Main;
+  private _statusbar: StatusBar;
+
+  constructor() {
+    this.initUI();
+    this.reopenFilesFromLastUse();
+  }
+
+  private initUI() {
+    const body = document.querySelector('body');
+
+    this._main = new Main();
+    this._statusbar = new StatusBar();
+
+    body.appendChild(this._main);
+    body.appendChild(this._statusbar);
+
+    applyStyles(body, styles);
+
+    document.addEventListener('new-file-requested', this.onNewFileRequested.bind(this));
+    document.addEventListener('open-file-requested', this.onOpenFileRequested.bind(this))
+  }
+
+  onNewFileRequested() {
+    this._main.newFile();
+  }
+
+  onOpenFileRequested() {
+    const filename = window.api.dialogs.showOpenFileDialog();
+
+    if (!filename) {
+      return;
+    }
+
+    this._main.openFile(filename);
+  }
+
+  onWindowCloseRequested() {
+    const proceed = this._main.saveUnsavedFiles();
+    if (proceed) {
+      window.close();
+    }
+  }
+
+  private reopenFilesFromLastUse() {
+    const filenames = window.api.config.openFiles.all();
+    filenames.forEach(filename => {
+      this._main.openFile(filename);
+    });
+  }
+}
+          </code>
+        </pre>
+      </figure>
+      <a href="/blog">Back To Blog >></a>
+    </section>
+  </main>
+  <script>hljs.highlightAll();</script>
+  <!-- Footer component: -->
+  <footer>
+    <img src="/assets/images/logos/logo-EBEDEF.svg" alt="logo" height="40px">
+    <nav>
+      <a href="/">HOME</a>
+      <a href="/about">ABOUT</a>
+      <a href="/blog">BLOG</a>
+      <a href="/contact">CONTACT</a>
+    </nav>
+    <div class="socials">
+      <a href="https://github.com/R-Neville">
+        <img src="/assets/images/logos/github-EBEDEF.png" alt="GitHub logo">
+      </a>
+      <a href="https://www.linkedin.com/in/r-neville/">
+        <img src="/assets/images/logos/linkedin-EBEDEF.png" alt="LinkedIn logo">
+      </a>
+    </div>
+    <p>&copy; 2022, Robert Neville</p>
+  </footer>
+  <script src="/js/menu.js"></script>
+</body>
+</html>

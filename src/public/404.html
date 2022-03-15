@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 | Portfolio</title>
+  <link rel="icon" href="/assets/images/favicon.svg">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+  <!-- Header component: -->
+  <header>
+    <img src="/assets/images/logos/logo-1B2631.svg" alt="logo" height="25px">
+    <nav>
+      <a href="/">HOME</a>
+      <a href="/about">ABOUT</a>
+      <a href="/blog">BLOG</a>
+      <a href="/contact">CONTACT</a>
+    </nav>
+    <div class="hamburger">
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+    </div>
+  </header>
+  <!-- Menu component: -->
+  <div id="menu">
+    <nav>
+      <a href="/">HOME</a>
+      <a href="/about">ABOUT</a>
+      <a href="/blog">BLOG</a>
+      <a href="/contact">CONTACT</a>
+    </nav>
+    <div class="socials">
+      <a href="https://github.com/R-Neville">
+        <img src="/assets/images/logos/github-1B2631.png" alt="GitHub logo">
+      </a>
+      <a href="https://www.linkedin.com/in/r-neville/">
+        <img src="/assets/images/logos/linkedin-1B2631.png" alt="LinkedIn logo">
+      </a>
+    </div>
+  </div>
+  <!-- Fixed background: -->
+  <div id="fixed-background"></div>
+  <!-- Main content: -->
+  <main>
+    <!-- 404 message: -->
+    <section>
+      <h2>&#128078; 404</h2>
+      <p>
+        Is there a typo in the URL you entered?
+        The resource you requested could not be found.
+        It may never have existed, or you might have used a
+        broken link... 
+      </p>
+      <span>¯\_(ツ)_/¯</span>
+    </section>
+    <!-- Contact section for missing resources: -->
+    <section>
+      <h2>&#128083; Something missing?</h2>
+      <p>
+        If you're sure there should be something here,
+        shoot me a message with the form below:
+      </p>
+      <!-- Contact form: -->
+      <form id="contact" action="/contact" method="POST">
+        <fieldset class="name">
+          <label for="name">NAME</label>
+          <input id="name" name="name"type="text">
+        </fieldset>
+        <fieldset class="email">
+          <label for="email">EMAIL</label>
+          <input id="email" name="email" type="text">
+        </fieldset>
+        <fieldset class="message">
+          <label for="message">MESSAGE</label>
+          <textarea id="message" name="message" rows="10"></textarea>
+        </fieldset>
+        <fieldset class="buttons">
+          <button type="reset">RESET</button>
+          <button type="submit">SEND</button>
+        </fieldset>
+      </form>
+    </section>
+  </main>
+  <script src="/js/contact.js"></script>
+  <!-- Footer component: -->
+  <footer>
+    <img src="/assets/images/logos/logo-EBEDEF.svg" alt="logo" height="40px">
+    <nav>
+      <a href="/">HOME</a>
+      <a href="/about">ABOUT</a>
+      <a href="/blog">BLOG</a>
+      <a href="/contact">CONTACT</a>
+    </nav>
+    <div class="socials">
+      <a href="https://github.com/R-Neville">
+        <img src="/assets/images/logos/github-EBEDEF.png" alt="GitHub logo">
+      </a>
+      <a href="https://www.linkedin.com/in/r-neville/">
+        <img src="/assets/images/logos/linkedin-EBEDEF.png" alt="LinkedIn logo">
+      </a>
+    </div>
+    <p>&copy; 2022, Robert Neville</p>
+  </footer>
+  <script src="/js/menu.js"></script>
+</body>
+</html>
