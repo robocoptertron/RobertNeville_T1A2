@@ -20,6 +20,14 @@ on the Web.
 The site is currently deployed at 
 [rncode.herokuapp.com](https://rncode.herokuapp.com). 
 
+**IMPORTANT NOTE**: branch `main` of this repository features the use of the npm
+package `express-handlebars` for HTML templating. However, if this 
+is unacceptable to those marking the assignment, I have created a 
+separate branch called `vanilla-html` that does not make use of Handlebars.
+The only difference between the site defined in `main` and the site defined 
+in `vanilla-html` is that the contact form in `vanilla-html` does not support
+noscript scenarios.
+
 ## Scripts
 
 **The following scripts must be executed in the root directory of
