@@ -1,3 +1,7 @@
+// In development, these values must 
+// come from a .env file. They have
+// been securely configured in the
+// deployment environment (Heroku)
 module.exports = {
   host: process.env.EMAIL_HOST,
   port: process.env.EMAIL_PORT,
