@@ -1,7 +1,10 @@
+// Returns a closure that can be used
+// to validate req.body against an 
+// arbitrary Joi schema. Used in
+// case additional forms are added
+// to the site
 module.exports = schema => {
   return (req, res, next) => {
-    // Validate req.body against the given
-    // Joi schema (using a closure here):
     const { error } = schema.validate(req.body);
     if (error) {
       if (!req.xhr) {
