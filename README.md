@@ -40,11 +40,52 @@ Tested environments:
 - **Ubuntu 20.04.4 LTS** with **Chrome 98.0.4758.102 (64-bit)**
 - **Android 11** with **Chrome 98.0.4758.101**  
 
+### Project Directory Structure
+
+The project has the following directory structure (excluding node_modules):
+
+```
+├── docs
+└── src
+    ├── config
+    ├── middleware
+    ├── public
+    │   ├── assets
+    │   │   ├── fonts
+    │   │   └── images
+    │   │       ├── blog
+    │   │       ├── cover-art
+    │   │       ├── icons
+    │   │       └── logos
+    │   ├── css
+    │   └── js
+    ├── routes
+    ├── schemas
+    ├── scss
+    └── views
+        ├── blog-posts
+        ├── layouts
+        └── partials
+```
+
+To assist in marking the submission, I would like to direct the reader's 
+attention to the `views` and `scss` directories; `views` contains all HTML
+used in the site we the primary layout (`main.bhs`) in the `layouts` subdirectory, and all partials are in the `partials` directory. The main 
+content for each view is in a separate file directly under `views` - the 
+names of these files reflect the name of the corresponding application 
+route.
+
 ## Purpose
 
 The purpose of this website is to demonstrate my abilities as a developer
 to prospective employers. It has a minimal design, but the content and 
 various additional features communicate my skills and experience effectively.
+
+Although the criteria for this assessment piece only requires the use
+of HTML and CSS/Sass, I figured that I might as well incorporate as much of
+my knowledge as practical within the time given to produce a fully functional
+website. This approach reduces the need for elaboration down the track, and 
+more accurately demonstrates my current ability as a developer.
 
 ## Functionality / Features
 
@@ -159,14 +200,14 @@ This project utilises the following primary technologies:
 - JavaScript (vanilla)
 - Node.js
 
-These are its dependencies:
+These are the its dependencies:
 
 - express
 - express-handlebars
 - joi
 - nodemailer
 
-These are it's devDependencies:
+These are its devDependencies:
 
 - concurrently
 - cross-env
